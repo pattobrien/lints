@@ -1,24 +1,25 @@
 import 'package:analyzer/dart/ast/ast.dart';
-import 'package:flutter_analyzer_utils/material.dart';
 import 'package:sidecar/sidecar.dart';
 
 import 'constants.dart';
 
 class AvoidIconLiteral extends LintRule with LintVisitor {
   @override
-  String get code => 'avoid_icon_literal';
+  RuleCode get code =>
+      LintCode('avoid_icon_literal', package: kDesignSystemPackageId);
 
   @override
-  String get packageName => kDesignSystemPackageId;
+  Uri get url => kUri;
 
   @override
-  String get url => kUrl;
-
-  @override
-  SidecarAstVisitor Function() get visitorCreator => _Visitor.new;
+  SidecarVisitor initializeVisitor(NodeRegistry registry) {
+    final visitor = _Visitor();
+    registry.addPrefixedIdentifier(this, visitor);
+    return visitor;
+  }
 }
 
-class _Visitor extends SidecarAstVisitor {
+class _Visitor extends SidecarVisitor {
   @override
   void visitPrefixedIdentifier(PrefixedIdentifier node) {
     // final isIconData = _isIconData(node.prefix.staticElement);

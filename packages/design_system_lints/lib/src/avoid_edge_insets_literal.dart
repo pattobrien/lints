@@ -6,19 +6,21 @@ import 'constants.dart';
 
 class AvoidEdgeInsetsLiteral extends LintRule with LintVisitor {
   @override
-  String get code => 'avoid_edge_insets_literal';
+  RuleCode get code =>
+      LintCode('avoid_edge_insets_literal', package: kDesignSystemPackageId);
 
   @override
-  String get packageName => kDesignSystemPackageId;
+  Uri get url => kUri;
 
   @override
-  String get url => kUrl;
-
-  @override
-  SidecarAstVisitor Function() get visitorCreator => _Visitor.new;
+  SidecarVisitor initializeVisitor(NodeRegistry registry) {
+    final visitor = _Visitor();
+    registry.addInstanceCreationExpression(this, visitor);
+    return visitor;
+  }
 }
 
-class _Visitor extends SidecarAstVisitor {
+class _Visitor extends SidecarVisitor {
   @override
   void visitInstanceCreationExpression(InstanceCreationExpression node) {
     final type = node.constructorName.staticElement?.returnType;

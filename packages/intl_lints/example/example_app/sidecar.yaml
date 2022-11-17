@@ -1,0 +1,6 @@
+includes:
+  - "bin/**"
+  - "lib/**"
+lints:
+  intl_lints:
+    string_literals: null

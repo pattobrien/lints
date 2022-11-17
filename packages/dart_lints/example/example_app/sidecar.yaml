@@ -1,0 +1,6 @@
+includes:
+  - "bin/**"
+  - "lib/**"
+lints:
+  dart_lints:
+    always_declare_return_types: null
