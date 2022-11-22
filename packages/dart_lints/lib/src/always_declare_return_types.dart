@@ -5,27 +5,20 @@ import 'package:sidecar/sidecar.dart';
 import '../constants.dart';
 
 final kAlwaysDeclareReturnTypesCode =
-    LintCode('always_declare_return_types', package: kPackageId);
+    LintCode('always_declare_return_types', package: kPackageId, url: kDartUri);
 
-class AlwaysDeclareReturnTypes extends LintRule with LintVisitor {
+class AlwaysDeclareReturnTypes extends SidecarSimpleAstVisitor with LintMixin {
   @override
-  RuleCode get code => kAlwaysDeclareReturnTypesCode;
-
-  @override
-  Uri get url => kDartUri;
+  LintCode get code => kAlwaysDeclareReturnTypesCode;
 
   @override
-  SidecarVisitor initializeVisitor(NodeRegistry registry) {
-    final visitor = _Visitor();
+  void initializeVisitor(NodeRegistry registry) {
     registry
-      ..addFunctionDeclaration(this, visitor)
-      ..addMethodDeclaration(this, visitor)
-      ..addFunctionTypeAlias(this, visitor);
-    return visitor;
+      ..addFunctionDeclaration(this)
+      ..addFunctionTypeAlias(this)
+      ..addMethodDeclaration(this);
   }
-}
 
-class _Visitor extends SidecarVisitor {
   @override
   void visitFunctionDeclaration(FunctionDeclaration node) {
     if (!node.isSetter && node.returnType == null) {

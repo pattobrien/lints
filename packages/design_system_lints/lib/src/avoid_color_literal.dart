@@ -1,25 +1,19 @@
 import 'package:analyzer/dart/ast/ast.dart';
+import 'package:analyzer/dart/ast/visitor.dart';
 import 'package:sidecar/sidecar.dart';
 
 import 'constants.dart';
 
-class AvoidColorLiteral extends LintRule with LintVisitor {
+class AvoidColorLiteral extends SidecarSimpleAstVisitor with LintMixin {
   @override
-  RuleCode get code =>
+  LintCode get code =>
       LintCode('avoid_color_literal', package: kDesignSystemPackageId);
 
   @override
-  Uri get url => kUri;
-
-  @override
-  SidecarVisitor initializeVisitor(NodeRegistry registry) {
-    final visitor = _Visitor();
-    registry.addInstanceCreationExpression(this, visitor);
-    return visitor;
+  void initializeVisitor(NodeRegistry registry) {
+    registry.addInstanceCreationExpression(this);
   }
-}
 
-class _Visitor extends SidecarVisitor {
   @override
   void visitInstanceCreationExpression(InstanceCreationExpression node) {
     final element = node.constructorName.staticElement;

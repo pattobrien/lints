@@ -3,23 +3,16 @@ import 'package:sidecar/sidecar.dart';
 
 import 'constants.dart';
 
-class AvoidIconLiteral extends LintRule with LintVisitor {
+class AvoidIconLiteral extends SidecarSimpleAstVisitor with LintMixin {
   @override
-  RuleCode get code =>
-      LintCode('avoid_icon_literal', package: kDesignSystemPackageId);
+  LintCode get code => LintCode('avoid_icon_literal',
+      package: kDesignSystemPackageId, url: kUri);
 
   @override
-  Uri get url => kUri;
-
-  @override
-  SidecarVisitor initializeVisitor(NodeRegistry registry) {
-    final visitor = _Visitor();
-    registry.addPrefixedIdentifier(this, visitor);
-    return visitor;
+  void initializeVisitor(NodeRegistry registry) {
+    registry.addPrefixedIdentifier(this);
   }
-}
 
-class _Visitor extends SidecarVisitor {
   @override
   void visitPrefixedIdentifier(PrefixedIdentifier node) {
     // final isIconData = _isIconData(node.prefix.staticElement);

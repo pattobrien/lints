@@ -4,23 +4,17 @@ import 'package:sidecar/sidecar.dart';
 
 import 'constants.dart';
 
-class AvoidSizedBoxHeightWidthLiterals extends LintRule with LintVisitor {
+class AvoidSizedBoxHeightWidthLiterals extends SidecarSimpleAstVisitor
+    with LintMixin {
   @override
-  RuleCode get code => LintCode('avoid_sized_box_height_width_literals',
-      package: kDesignSystemPackageId);
+  LintCode get code => LintCode('avoid_sized_box_height_width_literals',
+      package: kDesignSystemPackageId, url: kUri);
 
   @override
-  Uri get url => kUri;
-
-  @override
-  SidecarVisitor initializeVisitor(NodeRegistry registry) {
-    final visitor = _Visitor();
-    registry.addInstanceCreationExpression(this, visitor);
-    return visitor;
+  void initializeVisitor(NodeRegistry registry) {
+    registry.addInstanceCreationExpression(this);
   }
-}
 
-class _Visitor extends SidecarVisitor {
   @override
   void visitInstanceCreationExpression(InstanceCreationExpression node) {
     final element = node.constructorName.staticElement;

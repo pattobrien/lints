@@ -4,24 +4,17 @@ import 'package:sidecar/sidecar.dart';
 import 'constants.dart';
 
 final kStringLiteralsCode =
-    LintCode('string_literals', package: kDesignSystemPackageId);
+    LintCode('string_literals', package: kDesignSystemPackageId, url: kUri);
 
-class StringLiterals extends LintRule with LintVisitor {
+class StringLiterals extends SidecarGeneralizingAstVisitor with LintMixin {
   @override
-  RuleCode get code => kStringLiteralsCode;
-
-  @override
-  Uri get url => kUri;
+  LintCode get code => kStringLiteralsCode;
 
   @override
-  SidecarVisitor initializeVisitor(NodeRegistry registry) {
-    final visitor = _Visitor();
-    registry.addSimpleStringLiteral(this, visitor);
-    return visitor;
+  void initializeVisitor(NodeRegistry registry) {
+    registry.addSimpleStringLiteral(this);
   }
-}
 
-class _Visitor extends SidecarVisitor {
   @override
   void visitStringLiteral(StringLiteral node) {
     reportAstNode(

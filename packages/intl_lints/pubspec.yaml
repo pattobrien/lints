@@ -1,17 +1,14 @@
 name: intl_lints
 description: A sample command-line application.
 version: 0.1.0-dev.1
-publish_to: none
-# homepage: https://www.example.com
+homepage: https://github.com/pattobrien/lints
 
 environment:
   sdk: ">=2.17.0 <3.0.0"
 
 dependencies:
   analyzer: ^4.2.0
-  # sidecar: ^0.1.0-dev.5
-  sidecar:
-    path: /Users/pattobrien/Development/sidecar/packages/sidecar/
+  sidecar: ^0.1.0-dev.5
   source_span: ^1.9.1
 
 dev_dependencies:
