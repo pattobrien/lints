@@ -4,10 +4,10 @@ import 'package:sidecar/sidecar.dart';
 
 import 'constants.dart';
 
-class AvoidBorderRadiusLiteral extends SidecarSimpleAstVisitor with LintMixin {
+class AvoidBorderRadiusLiteral extends SidecarAstVisitor with Lint {
   @override
-  LintCode get code => LintCode('avoid_border_radius_literal',
-      package: kDesignSystemPackageId, url: kUri);
+  LintCode get code =>
+      LintCode('avoid_border_radius_literal', package: kPackageId, url: kUrl);
 
   @override
   void initializeVisitor(NodeRegistry registry) {

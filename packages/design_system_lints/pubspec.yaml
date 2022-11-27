@@ -1,6 +1,6 @@
 name: design_system_lints
 description: A collection of lints and code edits to enforce UI standards within a codebase.
-version: 0.1.0-dev.2
+version: 0.1.0-dev.3
 repository: https://github.com/pattobrien/sidecar/tree/master/repositories/design_system_lints
 homepage: https://github.com/pattobrien/sidecar/tree/master/repositories/design_system_lints
 
@@ -10,7 +10,7 @@ environment:
 dependencies:
   analyzer: ^4.2.0
   flutter_analyzer_utils: ^0.2.0-dev.4
-  sidecar: ^0.1.0-dev.5
+  sidecar: ^0.1.0-dev.7
   source_span: ^1.9.1
 
 dev_dependencies:

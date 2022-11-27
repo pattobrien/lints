@@ -3,10 +3,10 @@ import 'package:sidecar/sidecar.dart';
 
 import 'constants.dart';
 
-class AvoidIconLiteral extends SidecarSimpleAstVisitor with LintMixin {
+class AvoidIconLiteral extends SidecarAstVisitor with Lint {
   @override
-  LintCode get code => LintCode('avoid_icon_literal',
-      package: kDesignSystemPackageId, url: kUri);
+  LintCode get code =>
+      LintCode('avoid_icon_literal', package: kPackageId, url: kUrl);
 
   @override
   void initializeVisitor(NodeRegistry registry) {

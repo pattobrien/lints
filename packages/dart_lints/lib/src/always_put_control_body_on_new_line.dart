@@ -6,8 +6,7 @@ import '../constants.dart';
 final _code =
     LintCode('always_put_control_body_on_new_line', package: kPackageId);
 
-class AlwaysPutControlBodyOnNewLine extends SidecarSimpleAstVisitor
-    with LintMixin {
+class AlwaysPutControlBodyOnNewLine extends SidecarAstVisitor with Lint {
   @override
   LintCode get code => _code;
 

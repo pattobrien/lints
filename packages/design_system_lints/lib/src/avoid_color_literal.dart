@@ -4,10 +4,9 @@ import 'package:sidecar/sidecar.dart';
 
 import 'constants.dart';
 
-class AvoidColorLiteral extends SidecarSimpleAstVisitor with LintMixin {
+class AvoidColorLiteral extends SidecarAstVisitor with Lint {
   @override
-  LintCode get code =>
-      LintCode('avoid_color_literal', package: kDesignSystemPackageId);
+  LintCode get code => LintCode('avoid_color_literal', package: kPackageId);
 
   @override
   void initializeVisitor(NodeRegistry registry) {

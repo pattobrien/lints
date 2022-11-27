@@ -6,7 +6,7 @@ import 'constants.dart';
 final kStringLiteralsCode =
     LintCode('string_literals', package: kDesignSystemPackageId, url: kUri);
 
-class StringLiterals extends SidecarGeneralizingAstVisitor with LintMixin {
+class StringLiterals extends SidecarAstVisitor with Lint, QuickFix {
   @override
   LintCode get code => kStringLiteralsCode;
 
@@ -17,11 +17,22 @@ class StringLiterals extends SidecarGeneralizingAstVisitor with LintMixin {
 
   @override
   void visitStringLiteral(StringLiteral node) {
-    reportAstNode(
-      node,
-      message: 'Avoid any hardcoded Strings.',
-      correction: 'Use an intl message instead.',
-    );
-    super.visitStringLiteral(node);
+    reportAstNode(node,
+        message: 'Avoid any hardcoded Strings.',
+        correction: 'Use an intl message instead.', editsComputer: () async {
+      return [
+        EditResult(message: 'Delete String', sourceChanges: [
+          SourceFileEdit(
+            filePath: unit.path,
+            edits: [
+              SourceEdit(
+                originalSourceSpan: node.toSourceSpan(unit),
+                replacement: 'replacement string',
+              ),
+            ],
+          ),
+        ]),
+      ];
+    });
   }
 }

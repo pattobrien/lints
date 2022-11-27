@@ -52,7 +52,7 @@ main() {
 
 final _code = LintCode('always_specify_types', package: kPackageId);
 
-class AlwaysSpecifyTypes extends SidecarSimpleAstVisitor with LintMixin {
+class AlwaysSpecifyTypes extends SidecarAstVisitor with Lint {
   @override
   List<String> get incompatibleRules =>
       const ['avoid_types_on_closure_parameters', 'omit_local_variable_types'];

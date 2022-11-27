@@ -32,8 +32,8 @@ m({@required a, b, c}) ;
 final _code =
     LintCode('always_put_required_named_parameters_first', package: kPackageId);
 
-class AlwaysPutRequiredNamedParametersFirst extends SidecarSimpleAstVisitor
-    with LintMixin {
+class AlwaysPutRequiredNamedParametersFirst extends SidecarAstVisitor
+    with Lint {
   @override
   LintCode get code => _code;
 

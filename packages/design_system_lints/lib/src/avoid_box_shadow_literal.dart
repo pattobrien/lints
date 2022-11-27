@@ -1,14 +1,13 @@
 import 'package:analyzer/dart/ast/ast.dart';
-import 'package:analyzer/dart/ast/visitor.dart';
 import 'package:flutter_analyzer_utils/painting.dart';
 import 'package:sidecar/sidecar.dart';
 
 import 'constants.dart';
 
-final _code = LintCode('avoid_box_shadow_literal',
-    package: kDesignSystemPackageId, url: kUri);
+final _code =
+    LintCode('avoid_box_shadow_literal', package: kPackageId, url: kUrl);
 
-class AvoidBoxShadowLiteral extends SidecarSimpleAstVisitor with LintMixin {
+class AvoidBoxShadowLiteral extends SidecarAstVisitor with Lint {
   @override
   LintCode get code => _code;
 

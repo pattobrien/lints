@@ -1,6 +1,6 @@
 name: intl_lints
 description: A series of lints to help developing with l10n and l11n strings.
-version: 0.1.0-dev.1
+version: 0.1.0-dev.2
 homepage: https://github.com/pattobrien/lints
 
 environment:
@@ -8,9 +8,9 @@ environment:
 
 dependencies:
   analyzer: ^4.2.0
-  # sidecar: ^0.1.0-dev.5
-  sidecar:
-    path: /Users/pattobrien/Development/sidecar/packages/sidecar/
+  sidecar: ^0.1.0-dev.7
+  # sidecar:
+  #   path: /Users/pattobrien/Development/sidecar/packages/sidecar/
   source_span: ^1.9.1
 
 dev_dependencies:

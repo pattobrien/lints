@@ -7,7 +7,7 @@ import '../constants.dart';
 final kAlwaysDeclareReturnTypesCode =
     LintCode('always_declare_return_types', package: kPackageId, url: kDartUri);
 
-class AlwaysDeclareReturnTypes extends SidecarSimpleAstVisitor with LintMixin {
+class AlwaysDeclareReturnTypes extends SidecarAstVisitor with Lint {
   @override
   LintCode get code => kAlwaysDeclareReturnTypesCode;
 

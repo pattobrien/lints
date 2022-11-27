@@ -4,10 +4,10 @@ import 'package:sidecar/sidecar.dart';
 
 import 'constants.dart';
 
-class AvoidEdgeInsetsLiteral extends SidecarSimpleAstVisitor with LintMixin {
+class AvoidEdgeInsetsLiteral extends SidecarAstVisitor with Lint {
   @override
-  LintCode get code => LintCode('avoid_edge_insets_literal',
-      package: kDesignSystemPackageId, url: kUri);
+  LintCode get code =>
+      LintCode('avoid_edge_insets_literal', package: kPackageId, url: kUrl);
 
   @override
   void initializeVisitor(NodeRegistry registry) {

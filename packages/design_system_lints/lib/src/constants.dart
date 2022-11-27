@@ -1,4 +1,5 @@
-const kDesignSystemPackageId = 'design_system_lints';
+const kPackageId = 'design_system_lints';
 
-final _kUrl = 'https://github.com/pattobrien/sidecar';
-final kUri = Uri.parse(_kUrl);
+// final kUrl =
+//     Uri(scheme: 'https', host: 'github.com', path: 'pattobrien/sidecar');
+final kUrl = Uri.parse('https://github.com/pattobrien/sidecar');
