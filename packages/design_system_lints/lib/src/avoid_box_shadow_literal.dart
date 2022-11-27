@@ -7,6 +7,7 @@ import 'constants.dart';
 final _code =
     LintCode('avoid_box_shadow_literal', package: kPackageId, url: kUrl);
 
+/// Avoid hardcoding BoxShadows.
 class AvoidBoxShadowLiteral extends SidecarAstVisitor with Lint {
   @override
   LintCode get code => _code;

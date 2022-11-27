@@ -1,4 +1,3 @@
-import 'package:sidecar/sidecar.dart';
 import 'package:test/test.dart';
 
 void main() {

@@ -4,6 +4,7 @@ import 'package:sidecar/sidecar.dart';
 
 import 'constants.dart';
 
+/// Avoid hardcoding BorderRadius.
 class AvoidBorderRadiusLiteral extends SidecarAstVisitor with Lint {
   @override
   LintCode get code =>

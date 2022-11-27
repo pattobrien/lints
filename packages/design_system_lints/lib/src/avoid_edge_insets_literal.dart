@@ -4,6 +4,7 @@ import 'package:sidecar/sidecar.dart';
 
 import 'constants.dart';
 
+/// Avoid using hardcoded EdgeInsets.
 class AvoidEdgeInsetsLiteral extends SidecarAstVisitor with Lint {
   @override
   LintCode get code =>

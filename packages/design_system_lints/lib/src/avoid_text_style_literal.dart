@@ -4,6 +4,7 @@ import 'package:sidecar/sidecar.dart';
 
 import 'constants.dart';
 
+/// Avoid using hardcoded text styles.
 class AvoidTextStyleLiteral extends SidecarAstVisitor with Lint, QuickFix {
   @override
   LintCode get code =>

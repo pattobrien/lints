@@ -3,6 +3,7 @@ import 'package:sidecar/sidecar.dart';
 
 import 'constants.dart';
 
+/// Avoid using hardcoded Icons.
 class AvoidIconLiteral extends SidecarAstVisitor with Lint {
   @override
   LintCode get code =>
