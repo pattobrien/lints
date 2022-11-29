@@ -1,6 +1,10 @@
 includes:
   - "bin/**"
   - "lib/**"
+  - "**/Info.plist"
 lints:
   intl_lints:
-    string_literals: null
+    rules:
+      # string_literals:
+      hardcoded_text_string:
+      info_plist:

@@ -3,17 +3,16 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:analyzer/dart/ast/ast.dart';
-import 'package:analyzer/dart/ast/visitor.dart';
 import 'package:analyzer/dart/element/element.dart';
 import 'package:analyzer/dart/element/type.dart';
-import 'package:dart_lints/src/utils/ascii_utils.dart';
 import 'package:sidecar/sidecar.dart';
 
 import '../constants.dart';
+import 'utils/ascii_utils.dart';
 
-const _desc = r'Specify type annotations.';
+const desc = 'Specify type annotations.';
 
-const _details = r'''
+const details = '''
 From the [style guide for the flutter repo](https://flutter.dev/style-guide/):
 **DO** specify type annotations.
 Avoid `var` when specifying that a type is unknown and short-hands that elide
@@ -50,15 +49,15 @@ main() {
 ```
 ''';
 
-final _code = LintCode('always_specify_types', package: kPackageId);
-
-class AlwaysSpecifyTypes extends SidecarAstVisitor with Lint {
-  @override
+class AlwaysSpecifyTypes extends Rule with Lint {
   List<String> get incompatibleRules =>
       const ['avoid_types_on_closure_parameters', 'omit_local_variable_types'];
 
   @override
-  LintCode get code => _code;
+  LintCode get code => const LintCode(
+        'always_specify_types',
+        package: kPackageId,
+      );
 
   @override
   void initializeVisitor(NodeRegistry registry) {
@@ -81,21 +80,21 @@ class AlwaysSpecifyTypes extends SidecarAstVisitor with Lint {
   }
 
   @override
-  void visitListLiteral(ListLiteral literal) {
-    _checkLiteral(literal);
+  void visitListLiteral(ListLiteral node) {
+    _checkLiteral(node);
   }
 
   @override
-  void visitNamedType(NamedType namedType) {
-    var type = namedType.type;
+  void visitNamedType(NamedType node) {
+    final type = node.type;
     if (type is InterfaceType) {
-      var element = namedType.name.staticElement;
+      final element = node.name.staticElement;
       if (element is TypeParameterizedElement &&
           element.typeParameters.isNotEmpty &&
-          namedType.typeArguments == null &&
-          namedType.parent is! IsExpression &&
+          node.typeArguments == null &&
+          node.parent is! IsExpression &&
           !element.hasOptionalTypeArgs) {
-        reportAstNode(namedType,
+        reportAstNode(node,
             message: 'Missing type annotation.',
             correction: 'Try adding a type annotation.');
       }
@@ -103,20 +102,20 @@ class AlwaysSpecifyTypes extends SidecarAstVisitor with Lint {
   }
 
   @override
-  void visitSetOrMapLiteral(SetOrMapLiteral literal) {
-    _checkLiteral(literal);
+  void visitSetOrMapLiteral(SetOrMapLiteral node) {
+    _checkLiteral(node);
   }
 
   @override
-  void visitSimpleFormalParameter(SimpleFormalParameter param) {
-    var name = param.name;
-    if (name != null && param.type == null && !name.lexeme.isJustUnderscores) {
-      if (param.keyword != null) {
-        reportToken(param.keyword!,
+  void visitSimpleFormalParameter(SimpleFormalParameter node) {
+    final name = node.name;
+    if (name != null && node.type == null && !name.lexeme.isJustUnderscores) {
+      if (node.keyword != null) {
+        reportToken(node.keyword!,
             message: 'Missing type annotation.',
             correction: 'Try adding a type annotation.');
       } else {
-        reportAstNode(param,
+        reportAstNode(node,
             message: 'Missing type annotation.',
             correction: 'Try adding a type annotation.');
       }
@@ -124,9 +123,9 @@ class AlwaysSpecifyTypes extends SidecarAstVisitor with Lint {
   }
 
   @override
-  void visitVariableDeclarationList(VariableDeclarationList list) {
-    if (list.type == null) {
-      reportToken(list.keyword!,
+  void visitVariableDeclarationList(VariableDeclarationList node) {
+    if (node.type == null) {
+      reportToken(node.keyword!,
           message: 'Missing type annotation.',
           correction: 'Try adding a type annotation.');
     }

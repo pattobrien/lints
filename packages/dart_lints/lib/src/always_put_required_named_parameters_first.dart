@@ -6,9 +6,9 @@ import 'package:sidecar/sidecar.dart';
 
 import '../constants.dart';
 
-const _desc = r'Put required named parameters first.';
+const desc = 'Put required named parameters first.';
 
-const _details = r'''
+const details = '''
 **DO** specify `required` on named parameter before other named parameters.
 **BAD:**
 ```dart
@@ -28,13 +28,12 @@ m({@required a, b, c}) ;
 ```
 ''';
 
-final _code =
-    LintCode('always_put_required_named_parameters_first', package: kPackageId);
-
-class AlwaysPutRequiredNamedParametersFirst extends SidecarAstVisitor
-    with Lint {
+class AlwaysPutRequiredNamedParametersFirst extends Rule with Lint {
   @override
-  LintCode get code => _code;
+  LintCode get code => const LintCode(
+        'always_put_required_named_parameters_first',
+        package: kPackageId,
+      );
 
   @override
   void initializeVisitor(NodeRegistry registry) {
@@ -45,7 +44,7 @@ class AlwaysPutRequiredNamedParametersFirst extends SidecarAstVisitor
   void visitFormalParameterList(FormalParameterList node) {
     var nonRequiredSeen = false;
     for (final param in node.parameters.where((p) => p.isNamed)) {
-      var element = param.declaredElement;
+      final element = param.declaredElement;
       if (element != null && (element.hasRequired || element.isRequiredNamed)) {
         if (nonRequiredSeen) {
           final name = param.name;

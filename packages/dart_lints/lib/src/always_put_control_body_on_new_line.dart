@@ -3,12 +3,10 @@ import 'package:sidecar/sidecar.dart';
 
 import '../constants.dart';
 
-final _code =
-    LintCode('always_put_control_body_on_new_line', package: kPackageId);
-
-class AlwaysPutControlBodyOnNewLine extends SidecarAstVisitor with Lint {
+class AlwaysPutControlBodyOnNewLine extends Rule with Lint {
   @override
-  LintCode get code => _code;
+  LintCode get code => const LintCode('always_put_control_body_on_new_line',
+      package: kPackageId);
 
   @override
   void initializeVisitor(NodeRegistry registry) {

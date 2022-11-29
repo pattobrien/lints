@@ -4,12 +4,10 @@ import 'package:sidecar/sidecar.dart';
 
 import '../constants.dart';
 
-final kAlwaysDeclareReturnTypesCode =
-    LintCode('always_declare_return_types', package: kPackageId, url: kDartUri);
-
-class AlwaysDeclareReturnTypes extends SidecarAstVisitor with Lint {
+class AlwaysDeclareReturnTypes extends Rule with Lint {
   @override
-  LintCode get code => kAlwaysDeclareReturnTypesCode;
+  LintCode get code => LintCode('always_declare_return_types',
+      package: kPackageId, url: kDartUri);
 
   @override
   void initializeVisitor(NodeRegistry registry) {
@@ -24,7 +22,7 @@ class AlwaysDeclareReturnTypes extends SidecarAstVisitor with Lint {
     if (!node.isSetter && node.returnType == null) {
       reportToken(node.name2,
           message:
-              'The function ${node.name2.lexeme} should have a return type but doesn\'t.',
+              "The function ${node.name2.lexeme} should have a return type but doesn't.",
           correction: 'Try adding a return type to the function.');
     }
   }
@@ -34,7 +32,7 @@ class AlwaysDeclareReturnTypes extends SidecarAstVisitor with Lint {
     if (node.returnType == null) {
       reportToken(node.name2,
           message:
-              'The function ${node.name2.lexeme} should have a return type but doesn\'t.',
+              "The function ${node.name2.lexeme} should have a return type but doesn't.",
           correction: 'Try adding a return type to the function.');
     }
   }
@@ -46,7 +44,7 @@ class AlwaysDeclareReturnTypes extends SidecarAstVisitor with Lint {
         node.name2.type != TokenType.INDEX_EQ) {
       reportToken(node.name2,
           message:
-              'The method ${node.name2.lexeme} should have a return type but doesn\'t.',
+              "The method ${node.name2.lexeme} should have a return type but doesn't.",
           correction: 'Try adding a return type to the method.');
     }
   }

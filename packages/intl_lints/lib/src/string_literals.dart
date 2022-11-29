@@ -4,7 +4,7 @@ import 'package:sidecar/sidecar.dart';
 import 'constants.dart';
 
 final kStringLiteralsCode =
-    LintCode('string_literals', package: kDesignSystemPackageId, url: kUri);
+    LintCode('string_literals', package: packageId, url: kUri);
 
 class StringLiterals extends SidecarAstVisitor with Lint, QuickFix {
   @override
