@@ -6,8 +6,11 @@ import '../constants.dart';
 
 class AlwaysDeclareReturnTypes extends Rule with Lint {
   @override
-  LintCode get code => LintCode('always_declare_return_types',
-      package: kPackageId, url: kDartUri);
+  LintCode get code => LintCode(
+        'always_declare_return_types',
+        package: kPackageId,
+        url: kDartUri,
+      );
 
   @override
   void initializeVisitor(NodeRegistry registry) {
@@ -20,10 +23,12 @@ class AlwaysDeclareReturnTypes extends Rule with Lint {
   @override
   void visitFunctionDeclaration(FunctionDeclaration node) {
     if (!node.isSetter && node.returnType == null) {
-      reportToken(node.name2,
-          message:
-              "The function ${node.name2.lexeme} should have a return type but doesn't.",
-          correction: 'Try adding a return type to the function.');
+      reportToken(
+        node.name2,
+        message:
+            "The function ${node.name2.lexeme} should have a return type but doesn't.",
+        correction: 'Try adding a return type to the function.',
+      );
     }
   }
 
