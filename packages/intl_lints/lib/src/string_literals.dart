@@ -6,7 +6,7 @@ import 'constants.dart';
 final kStringLiteralsCode =
     LintCode('string_literals', package: packageId, url: kUri);
 
-class StringLiterals extends SidecarAstVisitor with Lint, QuickFix {
+class StringLiterals extends Rule with Lint, QuickFix {
   @override
   LintCode get code => kStringLiteralsCode;
 

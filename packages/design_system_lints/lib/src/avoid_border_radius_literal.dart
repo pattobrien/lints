@@ -5,10 +5,13 @@ import 'package:sidecar/sidecar.dart';
 import 'constants.dart';
 
 /// Avoid hardcoding BorderRadius.
-class AvoidBorderRadiusLiteral extends SidecarAstVisitor with Lint {
+class AvoidBorderRadiusLiteral extends Rule with Lint {
   @override
-  LintCode get code =>
-      LintCode('avoid_border_radius_literal', package: kPackageId, url: kUrl);
+  LintCode get code => LintCode(
+        'avoid_border_radius_literal',
+        package: kPackageId,
+        url: kUrl,
+      );
 
   @override
   void initializeVisitor(NodeRegistry registry) {

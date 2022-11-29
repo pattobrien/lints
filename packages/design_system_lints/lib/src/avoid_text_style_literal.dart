@@ -5,7 +5,7 @@ import 'package:sidecar/sidecar.dart';
 import 'constants.dart';
 
 /// Avoid using hardcoded text styles.
-class AvoidTextStyleLiteral extends SidecarAstVisitor with Lint, QuickFix {
+class AvoidTextStyleLiteral extends Rule with Lint, QuickFix {
   @override
   LintCode get code =>
       LintCode('avoid_text_style_literal', package: kPackageId, url: kUrl);
@@ -28,7 +28,7 @@ class AvoidTextStyleLiteral extends SidecarAstVisitor with Lint, QuickFix {
             message: 'test change',
             sourceChanges: [
               SourceFileEdit(filePath: unit.path, edits: [
-                SourceEdit.simple(unit.unit.length - 1, 1,
+                SourceEdit.fromOffset(unit.unit.length - 1, 1,
                     sourceUri: unit.uri, replacement: '// test')
               ])
             ],

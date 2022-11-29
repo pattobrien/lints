@@ -5,10 +5,13 @@ import 'package:sidecar/sidecar.dart';
 import 'constants.dart';
 
 /// Avoid using hardcoded EdgeInsets.
-class AvoidEdgeInsetsLiteral extends SidecarAstVisitor with Lint {
+class AvoidEdgeInsetsLiteral extends Rule with Lint {
   @override
-  LintCode get code =>
-      LintCode('avoid_edge_insets_literal', package: kPackageId, url: kUrl);
+  LintCode get code => LintCode(
+        'avoid_edge_insets_literal',
+        package: kPackageId,
+        url: kUrl,
+      );
 
   @override
   void initializeVisitor(NodeRegistry registry) {

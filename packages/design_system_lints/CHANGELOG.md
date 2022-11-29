@@ -1,8 +1,12 @@
+## 0.1.0-dev.5
+
+- docs: added API documentation to rule classes
+- chore: Updated to Sidecar 0.1.0-dev.9 APIs.
+
 ## 0.1.0-dev.4
 
 - docs: added API documentation to rule classes
 - chore: cleaned up static analysis lints for unused members, imports, etc.
-
 
 ## 0.1.0-dev.3
 

@@ -1,6 +1,6 @@
 name: intl_lints
 description: A series of lints to help developing with l10n and l11n strings.
-version: 0.1.0-dev.2
+version: 0.1.0-dev.3
 homepage: https://github.com/pattobrien/lints
 
 environment:
@@ -8,12 +8,10 @@ environment:
 
 dependencies:
   analyzer: ^4.2.0
-  sidecar: ^0.1.0-dev.7
   flutter_analyzer_utils: ^0.2.0-dev.4
-  # sidecar:
-  #   path: /Users/pattobrien/Development/sidecar/packages/sidecar/
-  source_span: ^1.9.1
   glob: ^2.1.1
+  sidecar: ^0.1.0-dev.9
+  source_span: ^1.9.1
 
 dev_dependencies:
   build_runner: ^2.3.0
@@ -24,4 +22,3 @@ sidecar:
   lints:
     - string_literals
     - hardcoded_text_string
-    - info_plist

@@ -5,7 +5,7 @@ import 'package:flutter_analyzer_utils/foundation.dart';
 
 import 'constants.dart';
 
-class HardcodedTextString extends SidecarAstVisitor with Lint {
+class HardcodedTextString extends Rule with Lint {
   @override
   LintCode get code =>
       LintCode('hardcoded_text_string', package: packageId, url: kUri);
@@ -55,7 +55,7 @@ bool isIgnored(LintResult lint, LineInfo lineInfo, String source) {
 
   final codes = codeContent.split(',').map((e) => e.trim()).toSet();
 
-  return codes.contains(lint.rule.code) || codes.contains('type=lint');
+  return codes.contains(lint.rule.id) || codes.contains('type=lint');
 }
 
 Set<String> getAllIgnoredForFileCodes(String source) {
