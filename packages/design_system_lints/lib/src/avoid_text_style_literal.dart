@@ -5,10 +5,13 @@ import 'package:sidecar/sidecar.dart';
 import 'constants.dart';
 
 /// Avoid using hardcoded text styles.
-class AvoidTextStyleLiteral extends Rule with Lint, QuickFix {
+class AvoidTextStyleLiteral extends Rule with Lint {
+  static const _id = 'avoid_text_style_literal';
+  static const _message = 'Avoid hardcoded TextStyle values';
+  static const _correction = 'Use values in design system spec instead';
+
   @override
-  LintCode get code =>
-      LintCode('avoid_text_style_literal', package: kPackageId, url: kUrl);
+  LintCode get code => LintCode(_id, package: kPackageId, url: kUrl);
 
   @override
   void initializeVisitor(NodeRegistry registry) {
@@ -19,23 +22,7 @@ class AvoidTextStyleLiteral extends Rule with Lint, QuickFix {
   void visitInstanceCreationExpression(InstanceCreationExpression node) {
     final element = node.constructorName.staticElement;
     if (textStyleType.isAssignableFromType(element?.returnType)) {
-      reportAstNode(node,
-          message: 'Avoid TextStyle literal.',
-          correction: 'Use design system spec instead.',
-          editsComputer: () async {
-        return [
-          EditResult(
-            message: 'test change',
-            sourceChanges: [
-              SourceFileEdit(filePath: unit.path, edits: [
-                SourceEdit.fromOffset(unit.unit.length - 1, 1,
-                    sourceUri: unit.uri, replacement: '// test')
-              ])
-            ],
-          )
-        ];
-      });
+      reportAstNode(node, message: _message, correction: _correction);
     }
-    super.visitInstanceCreationExpression(node);
   }
 }

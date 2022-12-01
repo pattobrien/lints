@@ -6,12 +6,12 @@ import 'constants.dart';
 
 /// Avoid using hardcoded EdgeInsets.
 class AvoidEdgeInsetsLiteral extends Rule with Lint {
+  static const _id = 'avoid_edge_insets_literal';
+  static const _message = 'Avoid hardcoded EdgeInsets values';
+  static const _correction = 'Use values in design system spec instead';
+
   @override
-  LintCode get code => LintCode(
-        'avoid_edge_insets_literal',
-        package: kPackageId,
-        url: kUrl,
-      );
+  LintCode get code => LintCode(_id, package: kPackageId, url: kUrl);
 
   @override
   void initializeVisitor(NodeRegistry registry) {
@@ -20,8 +20,8 @@ class AvoidEdgeInsetsLiteral extends Rule with Lint {
 
   @override
   void visitInstanceCreationExpression(InstanceCreationExpression node) {
-    final type = node.constructorName.staticElement?.returnType;
-    if (edgeInsetsType.isAssignableFromType(type)) {
+    final element = node.constructorName.staticElement;
+    if (edgeInsetsType.isAssignableFromType(element?.returnType)) {
       final args = node.argumentList.arguments
           .whereType<NamedExpression>()
           .where((e) =>
@@ -31,11 +31,7 @@ class AvoidEdgeInsetsLiteral extends Rule with Lint {
       for (var arg in args) {
         final exp = arg.expression;
         if (exp is DoubleLiteral || exp is IntegerLiteral) {
-          reportAstNode(
-            exp,
-            message: 'Avoid edge insets literal.',
-            correction: 'Use design system spec instead.',
-          );
+          reportAstNode(exp, message: _message, correction: _correction);
         }
         // e.g. CustomTheme.smallInsets()
         // if (exp is PrefixedIdentifier) {
@@ -63,6 +59,5 @@ class AvoidEdgeInsetsLiteral extends Rule with Lint {
         // }
       }
     }
-    super.visitInstanceCreationExpression(node);
   }
 }

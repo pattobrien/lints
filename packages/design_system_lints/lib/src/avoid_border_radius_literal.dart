@@ -6,12 +6,12 @@ import 'constants.dart';
 
 /// Avoid hardcoding BorderRadius.
 class AvoidBorderRadiusLiteral extends Rule with Lint {
+  static const _id = 'avoid_border_radius_literal';
+  static const _message = 'Avoid hardcoded BorderRadius values';
+  static const _correction = 'Use values in design system spec instead';
+
   @override
-  LintCode get code => LintCode(
-        'avoid_border_radius_literal',
-        package: kPackageId,
-        url: kUrl,
-      );
+  LintCode get code => LintCode(_id, package: kPackageId, url: kUrl);
 
   @override
   void initializeVisitor(NodeRegistry registry) {
@@ -20,14 +20,9 @@ class AvoidBorderRadiusLiteral extends Rule with Lint {
 
   @override
   void visitInstanceCreationExpression(InstanceCreationExpression node) {
-    final element = node.constructorName.staticElement;
-    if (borderRadiusType.isAssignableFromType(element?.returnType)) {
-      reportAstNode(
-        node,
-        message: 'Avoid BorderRadius literal.',
-        correction: 'Use design system spec instead.',
-      );
+    final type = node.constructorName.staticElement?.returnType;
+    if (borderRadiusType.isAssignableFromType(type)) {
+      reportAstNode(node, message: _message, correction: _correction);
     }
-    super.visitInstanceCreationExpression(node);
   }
 }

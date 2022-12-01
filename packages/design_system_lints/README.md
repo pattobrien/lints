@@ -1,18 +1,21 @@
 
 
-A collection of lints and code edits to enforce UI standards within a codebase. Built with [Sidecar](https://pub.dev/packages/sidecar).
+A collection of lints and code edits to enforce UI standards within a codebase. 
 
-## Lints
+> Powered by  [Sidecar](https://pub.dev/packages/sidecar)
 
-### avoid_edge_insets_literal
+## Overview
 
-### avoid_icon_literal
+As a project scales, UI consistency becomes more difficult to maintain if a centralized source of design elements is not set in place. No matter how subtle the differences are, inconsistent widget sizes or colors become more apparent and user satisfaction inevitably declines.
 
-### avoid_box_shadow_literal
+The concept of a design system is simple: define the basic UI building blocks for your product or brand in one central location (e.g. 1 Dart file), and reference it from anywhere in your codebase. By sticking to this system, clients or designers can add or edit an entire set of Brand styles in one place, which makes it even easier for developers to implement beautiful UIs throughout the application.
 
-### avoid_text_style_literal
+## Rule Overview
 
-### avoid_border_radius_literal
+This package includes rules that enforce use of a design system for the following Widgets:
 
-### avoid_sized_box_height_width_literals
-
+- SizedBox width and height
+- EdgeInsets (i.e. Padding and Margins)
+- TextStyle widgets
+- Border Radius
+- Box Shadows

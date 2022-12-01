@@ -6,9 +6,11 @@ import 'constants.dart';
 
 /// Avoid using hardcoded height and width in SizedBoxes.
 class AvoidSizedBoxHeightWidthLiterals extends Rule with Lint {
+  static const _id = 'avoid_sized_box_height_width_literals';
+  static const _message = 'Avoid using hardcoded height or width values.';
+  static const _correction = 'Use values in design system spec instead';
   @override
-  LintCode get code => LintCode('avoid_sized_box_height_width_literals',
-      package: kPackageId, url: kUrl);
+  LintCode get code => LintCode(_id, package: kPackageId, url: kUrl);
 
   @override
   void initializeVisitor(NodeRegistry registry) {
@@ -28,12 +30,7 @@ class AvoidSizedBoxHeightWidthLiterals extends Rule with Lint {
       for (var arg in args) {
         final exp = arg.expression;
         if (exp is DoubleLiteral || exp is IntegerLiteral) {
-          reportAstNode(
-            exp,
-            message:
-                'Avoid using height or width literals in SizedBox widgets.',
-            correction: 'Use design system spec instead.',
-          );
+          reportAstNode(exp, message: _message, correction: _correction);
         }
         if (exp is PrefixedIdentifier) {
           //TODO: handle expressions like "SomeClass.staticInteger"
@@ -47,6 +44,5 @@ class AvoidSizedBoxHeightWidthLiterals extends Rule with Lint {
         }
       }
     }
-    super.visitInstanceCreationExpression(node);
   }
 }
