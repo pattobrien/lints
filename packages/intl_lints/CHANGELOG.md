@@ -1,3 +1,8 @@
+## 0.1.0-dev.5
+
+- feat(rule): added avoid_string_literal for Sidecar unit testing
+- docs: updated readme docs with proper intl package links
+
 ## 0.1.0-dev.4
 
 - feat(rule): added hardcoded_text_string

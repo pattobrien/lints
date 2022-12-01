@@ -1,3 +1,4 @@
 library intl_lints;
 
-export 'src/hardcoded_string_in_widget.dart';
+export 'src/hardcoded_text_string.dart';
+export 'src/avoid_string_literal.dart';

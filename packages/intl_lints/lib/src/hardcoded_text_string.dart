@@ -5,6 +5,9 @@ import 'package:flutter_analyzer_utils/foundation.dart';
 
 import 'constants.dart';
 
+const packageId = 'intl_lints';
+final kUri = Uri.parse('https://github.com/pattobrien/lints/');
+
 class HardcodedTextString extends Rule with Lint {
   static const _id = 'hardcoded_text_string';
   static const _message = 'Avoid any hardcoded Strings in Text widgets';
