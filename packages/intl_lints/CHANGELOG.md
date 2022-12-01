@@ -1,3 +1,7 @@
+## 0.1.0-dev.6
+
+- test: added avoid_string_literal quick fix for Sidecar unit testing
+
 ## 0.1.0-dev.5
 
 - feat(rule): added avoid_string_literal for Sidecar unit testing

@@ -6,7 +6,7 @@ import 'constants.dart';
 /// Locates all strings.
 ///
 /// Used as a simple lint rule for running automated tests on Sidecar package.
-class AvoidStringLiteral extends Rule with Lint {
+class AvoidStringLiteral extends Rule with Lint, QuickFix {
   static const _id = 'avoid_string_literal';
   static const _message = 'Avoid any hardcoded Strings in Text widgets';
   static const _correction = 'Prefer to use a translated Intl message instead.';
@@ -21,6 +21,25 @@ class AvoidStringLiteral extends Rule with Lint {
 
   @override
   void visitSimpleStringLiteral(SimpleStringLiteral node) {
-    reportAstNode(node, message: _message, correction: _correction);
+    reportAstNode(
+      node,
+      message: _message,
+      correction: _correction,
+      editsComputer: () async {
+        return [
+          EditResult(message: 'Delete String', sourceChanges: [
+            SourceFileEdit(
+              filePath: unit.path,
+              edits: [
+                SourceEdit(
+                  originalSourceSpan: node.toSourceSpan(unit),
+                  replacement: 'replacement string',
+                ),
+              ],
+            ),
+          ]),
+        ];
+      },
+    );
   }
 }

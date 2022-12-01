@@ -1,6 +1,6 @@
 name: intl_lints
 description: A series of lints to help developing with l10n and l11n strings.
-version: 0.1.0-dev.5
+version: 0.1.0-dev.6
 homepage: https://github.com/pattobrien/lints/tree/main/packages/intl_lints/
 repository: https://github.com/pattobrien/lints/tree/main/packages/intl_lints/
 issue_tracker: https://github.com/pattobrien/lints/issues
