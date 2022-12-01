@@ -3,6 +3,7 @@
 - feat(rule): added hardcoded_text_string
 - feat(rule): removed string_literals rule
 - chore: Utilize new Sidecar v0.1.0.-dev.11 APIs
+- docs: added example app
 
 ## 0.1.0-dev.3
 

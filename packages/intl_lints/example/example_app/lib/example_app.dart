@@ -14,7 +14,6 @@ class SomePath extends StatelessWidget {
       children: [
         Text('test'),
         Text(someString),
-        // ignore: intl_lints.hardcoded_text_string
         Text(someString),
       ],
     );
