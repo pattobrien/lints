@@ -7,4 +7,3 @@ lints:
     rules:
       # string_literals:
       hardcoded_text_string:
-      info_plist:

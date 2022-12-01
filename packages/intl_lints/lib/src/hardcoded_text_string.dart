@@ -3,8 +3,6 @@ import 'package:analyzer/source/line_info.dart';
 import 'package:sidecar/sidecar.dart';
 import 'package:flutter_analyzer_utils/foundation.dart';
 
-import 'constants.dart';
-
 const packageId = 'intl_lints';
 final kUri = Uri.parse('https://github.com/pattobrien/lints/');
 
