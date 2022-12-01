@@ -1,0 +1,9 @@
+includes:
+  - "bin/**"
+  - "lib/**"
+  - "**/Info.plist"
+lints:
+  intl_lints:
+    rules:
+      # string_literals:
+      hardcoded_text_string:

@@ -1,51 +1,49 @@
-import 'package:analyzer/dart/ast/ast.dart';
-import 'package:flutter_analyzer_utils/material.dart';
-import 'package:sidecar/sidecar.dart';
+// import 'package:analyzer/dart/ast/ast.dart';
+// import 'package:sidecar/sidecar.dart';
 
-import 'constants.dart';
+// import 'constants.dart';
 
-class AvoidIconLiteral extends LintRule with LintVisitor {
-  @override
-  String get code => 'avoid_icon_literal';
+// /// Avoid using hardcoded Icons.
+// class AvoidIconLiteral extends Rule with Lint {
+//   @override
+//   LintCode get code => LintCode(
+//         'avoid_icon_literal',
+//         package: kPackageId,
+//         url: kUrl,
+//       );
 
-  @override
-  String get packageName => kDesignSystemPackageId;
+//   @override
+//   void initializeVisitor(NodeRegistry registry) {
+//     registry.addPrefixedIdentifier(this);
+//   }
 
-  @override
-  String get url => kUrl;
+//   @override
+//   void visitPrefixedIdentifier(PrefixedIdentifier node) {
+//     // final isIconData = _isIconData(node.prefix.staticElement);
+//     // final type = node.identifier.staticType;
+//     // if (iconDataType.isAssignableFromType(type)) {
+//     //   final matchingAnnotation = node.thisOrAncestorMatching((astNode) {
+//     //     final isMatch = astNode is AnnotatedNode &&
+//     //         astNode.metadata.isNotEmpty &&
+//     //         annotatedNodes.any((annotation) {
+//     //           final isSameSource =
+//     //               annotation.annotatedNode.toSourceSpan(unit) ==
+//     //                   astNode.toSourceSpan(unit);
+//     //           return isSameSource &&
+//     //               annotation.input.packageName == kDesignSystemPackageId;
+//     //         });
+//     //     return isMatch;
+//     //   });
 
-  @override
-  SidecarAstVisitor Function() get visitorCreator => _Visitor.new;
-}
+//     //   if (matchingAnnotation == null) {
+//     //     reportAstNode(
+//     //       node,
+//     //       message: 'Avoid IconData literal.',
+//     //       correction: 'Use design system spec instead.',
+//     //     );
+//     //   }
+//     // }
 
-class _Visitor extends SidecarAstVisitor {
-  @override
-  void visitPrefixedIdentifier(PrefixedIdentifier node) {
-    // final isIconData = _isIconData(node.prefix.staticElement);
-    // final type = node.identifier.staticType;
-    // if (iconDataType.isAssignableFromType(type)) {
-    //   final matchingAnnotation = node.thisOrAncestorMatching((astNode) {
-    //     final isMatch = astNode is AnnotatedNode &&
-    //         astNode.metadata.isNotEmpty &&
-    //         annotatedNodes.any((annotation) {
-    //           final isSameSource =
-    //               annotation.annotatedNode.toSourceSpan(unit) ==
-    //                   astNode.toSourceSpan(unit);
-    //           return isSameSource &&
-    //               annotation.input.packageName == kDesignSystemPackageId;
-    //         });
-    //     return isMatch;
-    //   });
-
-    //   if (matchingAnnotation == null) {
-    //     reportAstNode(
-    //       node,
-    //       message: 'Avoid IconData literal.',
-    //       correction: 'Use design system spec instead.',
-    //     );
-    //   }
-    // }
-
-    return super.visitPrefixedIdentifier(node);
-  }
-}
+//     return super.visitPrefixedIdentifier(node);
+//   }
+// }

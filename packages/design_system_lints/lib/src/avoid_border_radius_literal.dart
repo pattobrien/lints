@@ -4,31 +4,25 @@ import 'package:sidecar/sidecar.dart';
 
 import 'constants.dart';
 
-class AvoidBorderRadiusLiteral extends LintRule with LintVisitor {
-  @override
-  String get code => 'avoid_border_radius_literal';
+/// Avoid hardcoding BorderRadius.
+class AvoidBorderRadiusLiteral extends Rule with Lint {
+  static const _id = 'avoid_border_radius_literal';
+  static const _message = 'Avoid hardcoded BorderRadius values';
+  static const _correction = 'Use values in design system spec instead';
 
   @override
-  String get packageName => kDesignSystemPackageId;
+  LintCode get code => LintCode(_id, package: kPackageId, url: kUrl);
 
   @override
-  String get url => kUrl;
+  void initializeVisitor(NodeRegistry registry) {
+    registry.addInstanceCreationExpression(this);
+  }
 
-  @override
-  SidecarAstVisitor Function() get visitorCreator => _Visitor.new;
-}
-
-class _Visitor extends SidecarAstVisitor {
   @override
   void visitInstanceCreationExpression(InstanceCreationExpression node) {
-    final element = node.constructorName.staticElement;
-    if (borderRadiusType.isAssignableFromType(element?.returnType)) {
-      reportAstNode(
-        node,
-        message: 'Avoid BorderRadius literal.',
-        correction: 'Use design system spec instead.',
-      );
+    final type = node.constructorName.staticElement?.returnType;
+    if (borderRadiusType.isAssignableFromType(type)) {
+      reportAstNode(node, message: _message, correction: _correction);
     }
-    super.visitInstanceCreationExpression(node);
   }
 }

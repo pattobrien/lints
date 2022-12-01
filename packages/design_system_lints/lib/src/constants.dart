@@ -1,3 +1,6 @@
-const kDesignSystemPackageId = 'design_system_lints';
+/// Design system lints package Id.
+const kPackageId = 'design_system_lints';
 
-final kUrl = 'https://github.com/pattobrien/sidecar';
+/// Url for design-system-lints github repo.
+final kUrl = Uri.parse(
+    'https://github.com/pattobrien/lints/tree/main/packages/design_system_lints');

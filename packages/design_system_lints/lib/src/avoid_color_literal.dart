@@ -1,34 +1,32 @@
-import 'package:analyzer/dart/ast/ast.dart';
-import 'package:sidecar/sidecar.dart';
+// import 'package:analyzer/dart/ast/ast.dart';
+// import 'package:sidecar/sidecar.dart';
 
-import 'constants.dart';
+// import 'constants.dart';
 
-class AvoidColorLiteral extends LintRule with LintVisitor {
-  @override
-  String get code => 'avoid_color_literal';
+// /// Avoid hardcoding Color literals.
+// class AvoidColorLiteral extends Rule with Lint {
+//   @override
+//   LintCode get code => LintCode(
+//         'avoid_color_literal',
+//         package: kPackageId,
+//       );
 
-  @override
-  String get packageName => kDesignSystemPackageId;
+//   @override
+//   void initializeVisitor(NodeRegistry registry) {
+//     registry.addInstanceCreationExpression(this);
+//   }
 
-  @override
-  String get url => kUrl;
+//   @override
+//   void visitInstanceCreationExpression(InstanceCreationExpression node) {
+//     // final element = node.constructorName.staticElement;
+//     // if (colorType.isAssignableFromType(element?.returnType)) {
+//     //   reportAstNode(
+//     //     node,
+//     //     message: 'Avoid Color literal',
+//     //     correction: 'Use design system spec instead.',
+//     //   );
+//     // }
 
-  @override
-  SidecarAstVisitor Function() get visitorCreator => _Visitor.new;
-}
-
-class _Visitor extends SidecarAstVisitor {
-  @override
-  void visitInstanceCreationExpression(InstanceCreationExpression node) {
-    final element = node.constructorName.staticElement;
-    // if (colorType.isAssignableFromType(element?.returnType)) {
-    //   reportAstNode(
-    //     node,
-    //     message: 'Avoid Color literal',
-    //     correction: 'Use design system spec instead.',
-    //   );
-    // }
-
-    super.visitInstanceCreationExpression(node);
-  }
-}
+//     super.visitInstanceCreationExpression(node);
+//   }
+// }

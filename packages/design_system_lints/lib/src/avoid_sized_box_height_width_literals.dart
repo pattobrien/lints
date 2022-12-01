@@ -1,23 +1,22 @@
 import 'package:analyzer/dart/ast/ast.dart';
 import 'package:flutter_analyzer_utils/material.dart';
-import 'package:design_system_lints/src/constants.dart';
 import 'package:sidecar/sidecar.dart';
 
-class AvoidSizedBoxHeightWidthLiterals extends LintRule with LintVisitor {
+import 'constants.dart';
+
+/// Avoid using hardcoded height and width in SizedBoxes.
+class AvoidSizedBoxHeightWidthLiterals extends Rule with Lint {
+  static const _id = 'avoid_sized_box_height_width_literals';
+  static const _message = 'Avoid using hardcoded height or width values.';
+  static const _correction = 'Use values in design system spec instead';
   @override
-  String get code => 'avoid_sized_box_height_width_literals';
+  LintCode get code => LintCode(_id, package: kPackageId, url: kUrl);
 
   @override
-  String get packageName => kDesignSystemPackageId;
+  void initializeVisitor(NodeRegistry registry) {
+    registry.addInstanceCreationExpression(this);
+  }
 
-  @override
-  String get url => kUrl;
-
-  @override
-  SidecarAstVisitor Function() get visitorCreator => _Visitor.new;
-}
-
-class _Visitor extends SidecarAstVisitor {
   @override
   void visitInstanceCreationExpression(InstanceCreationExpression node) {
     final element = node.constructorName.staticElement;
@@ -31,12 +30,7 @@ class _Visitor extends SidecarAstVisitor {
       for (var arg in args) {
         final exp = arg.expression;
         if (exp is DoubleLiteral || exp is IntegerLiteral) {
-          reportAstNode(
-            exp,
-            message:
-                'Avoid using height or width literals in SizedBox widgets.',
-            correction: 'Use design system spec instead.',
-          );
+          reportAstNode(exp, message: _message, correction: _correction);
         }
         if (exp is PrefixedIdentifier) {
           //TODO: handle expressions like "SomeClass.staticInteger"
@@ -50,6 +44,5 @@ class _Visitor extends SidecarAstVisitor {
         }
       }
     }
-    super.visitInstanceCreationExpression(node);
   }
 }

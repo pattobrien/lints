@@ -1,33 +1,28 @@
 import 'package:analyzer/dart/ast/ast.dart';
-import 'package:design_system_lints/src/constants.dart';
-import 'package:flutter_analyzer_utils/painting.dart';
+import 'package:flutter_analyzer_utils/services.dart';
 import 'package:sidecar/sidecar.dart';
 
-class AvoidTextStyleLiteral extends LintRule with LintVisitor {
-  @override
-  String get code => 'avoid_text_style_literal';
+import 'constants.dart';
+
+/// Avoid using hardcoded text styles.
+class AvoidTextStyleLiteral extends Rule with Lint {
+  static const _id = 'avoid_text_style_literal';
+  static const _message = 'Avoid hardcoded TextStyle values';
+  static const _correction = 'Use values in design system spec instead';
 
   @override
-  String get packageName => kDesignSystemPackageId;
+  LintCode get code => LintCode(_id, package: kPackageId, url: kUrl);
 
   @override
-  String get url => kUrl;
+  void initializeVisitor(NodeRegistry registry) {
+    registry.addInstanceCreationExpression(this);
+  }
 
-  @override
-  SidecarAstVisitor Function() get visitorCreator => _Visitor.new;
-}
-
-class _Visitor extends SidecarAstVisitor {
   @override
   void visitInstanceCreationExpression(InstanceCreationExpression node) {
     final element = node.constructorName.staticElement;
     if (textStyleType.isAssignableFromType(element?.returnType)) {
-      reportAstNode(
-        node,
-        message: r'Avoid TextStyle literal.',
-        correction: 'Use design system spec instead.',
-      );
+      reportAstNode(node, message: _message, correction: _correction);
     }
-    super.visitInstanceCreationExpression(node);
   }
 }
