@@ -6,12 +6,12 @@ import 'package:flutter_analyzer_utils/foundation.dart';
 import 'constants.dart';
 
 class HardcodedTextString extends Rule with Lint {
-  @override
-  LintCode get code =>
-      LintCode('hardcoded_text_string', package: packageId, url: kUri);
-
+  static const _id = 'hardcoded_text_string';
   static const _message = 'Avoid any hardcoded Strings in Text widgets';
   static const _correction = 'Prefer to use a translated Intl message instead.';
+
+  @override
+  LintCode get code => LintCode(_id, package: packageId, url: kUri);
 
   @override
   void initializeVisitor(NodeRegistry registry) {
@@ -23,12 +23,7 @@ class HardcodedTextString extends Rule with Lint {
     if (textType.isAssignableFromType(node.staticType)) {
       final textBody = node.argumentList.arguments
           .firstWhere((arg) => arg is! NamedExpression);
-      if (textBody is SimpleStringLiteral) {
-        // raw string
-        reportAstNode(textBody, message: _message, correction: _correction);
-      }
-      if (textBody is SimpleIdentifier) {
-        // text body node is a variable
+      if (textBody is SimpleStringLiteral || textBody is SimpleIdentifier) {
         reportAstNode(textBody, message: _message, correction: _correction);
       }
     }

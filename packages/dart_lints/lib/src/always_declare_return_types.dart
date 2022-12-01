@@ -5,12 +5,11 @@ import 'package:sidecar/sidecar.dart';
 import '../constants.dart';
 
 class AlwaysDeclareReturnTypes extends Rule with Lint {
+  static const _id = 'always_declare_return_types';
+
   @override
-  LintCode get code => LintCode(
-        'always_declare_return_types',
-        package: kPackageId,
-        url: kDartUri,
-      );
+  LintCode get code =>
+      LintCode(_id, package: kPackageId, url: kUri.resolve(_id));
 
   @override
   void initializeVisitor(NodeRegistry registry) {

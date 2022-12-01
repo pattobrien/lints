@@ -1,5 +1,5 @@
 const kPackageId = 'dart_lints';
 
-const _kDartUrl = '';
+const _kDartBaseUrl = 'https://dart-lang.github.io/linter/lints/';
 
-final kDartUri = Uri.parse(_kDartUrl);
+final kUri = Uri.parse(_kDartBaseUrl);

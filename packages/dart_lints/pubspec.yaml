@@ -1,6 +1,6 @@
 name: dart_lints
 description: Official Dart lints based on the Dart Style Guide, re-implemented for Sidecar.
-version: 0.1.0-dev.1
+version: 0.1.0-dev.3
 repository: https://github.com/pattobrien/lints/tree/main/packages/dart_lints
 homepage: https://github.com/pattobrien/lints/tree/main/packages/dart_lints
 issue_tracker: https://github.com/pattobrien/lints/issues
@@ -10,7 +10,7 @@ environment:
 
 dependencies:
   analyzer: ^4.2.0
-  sidecar: ^0.1.0-dev.9
+  sidecar: ^0.1.0-dev.11
   source_span: ^1.8.0
 
 dev_dependencies:
@@ -23,4 +23,5 @@ sidecar:
     - always_declare_return_types
     - always_put_control_body_on_new_line
     - always_put_required_named_parameters_first
+    - always_require_non_null_named_parameters
     - always_specify_types

@@ -4,9 +4,11 @@ import 'package:sidecar/sidecar.dart';
 import '../constants.dart';
 
 class AlwaysPutControlBodyOnNewLine extends Rule with Lint {
+  static const _id = 'always_put_control_body_on_new_line';
+
   @override
-  LintCode get code => const LintCode('always_put_control_body_on_new_line',
-      package: kPackageId);
+  LintCode get code =>
+      LintCode(_id, package: kPackageId, url: kUri.resolve(_id));
 
   @override
   void initializeVisitor(NodeRegistry registry) {

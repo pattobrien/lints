@@ -9,40 +9,10 @@ import 'package:sidecar/sidecar.dart';
 
 import '../constants.dart';
 
-const _desc = 'Specify `@required` on named parameters without defaults.';
-
-const details = '''
-
-**DO** specify `@required` on named parameters without a default value on which 
-an `assert(param != null)` is done.
-
-**GOOD:**
-```dart
-m1({@required a}) {
-  assert(a != null);
-}
-
-m2({a: 1}) {
-  assert(a != null);
-}
-```
-
-**BAD:**
-```dart
-m1({a}) {
-  assert(a != null);
-}
-```
-
-NOTE: Only asserts at the start of the bodies will be taken into account.
-
-''';
-
 class AlwaysRequireNonNullNamedParameters extends Rule with Lint {
   static const id = 'always_require_non_null_named_parameters';
   @override
-  LintCode get code =>
-      LintCode(id, package: kPackageId, url: kDartUri.resolve(id));
+  LintCode get code => LintCode(id, package: kPackageId, url: kUri.resolve(id));
 
   @override
   void initializeVisitor(NodeRegistry registry) {
@@ -84,7 +54,9 @@ class AlwaysRequireNonNullNamedParameters extends Rule with Lint {
   }
 
   void _checkAssert(
-      Expression assertExpression, List<DefaultFormalParameter> params) {
+    Expression assertExpression,
+    List<DefaultFormalParameter> params,
+  ) {
     for (final param in params) {
       final name = param.name;
       if (name != null && _hasAssertNotNull(assertExpression, name.lexeme)) {
@@ -137,4 +109,34 @@ class AlwaysRequireNonNullNamedParameters extends Rule with Lint {
     }
     return false;
   }
+
+  static const _desc =
+      'Specify `@required` on named parameters without defaults.';
+
+  static const details = '''
+
+**DO** specify `@required` on named parameters without a default value on which 
+an `assert(param != null)` is done.
+
+**GOOD:**
+```dart
+m1({@required a}) {
+  assert(a != null);
+}
+
+m2({a: 1}) {
+  assert(a != null);
+}
+```
+
+**BAD:**
+```dart
+m1({a}) {
+  assert(a != null);
+}
+```
+
+NOTE: Only asserts at the start of the bodies will be taken into account.
+
+''';
 }

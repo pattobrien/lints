@@ -20,5 +20,4 @@ dev_dependencies:
 
 sidecar:
   lints:
-    - string_literals
     - hardcoded_text_string
