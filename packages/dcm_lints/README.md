@@ -1,39 +1,13 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
+Lints based on ```package:dart_code_metrics```, re-implemented for [Sidecar](https://pub.dev/packages/sidecar).
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+> NOTE: The package was created as a means of benchmarking Sidecar against ```package:analyzer_plugin```, which both Sidecar and Dart Code Metrics currently use to run in the IDE. If you wish to use these lints to aid your app development, continue to use the official [dart_code_metrics](https://pub.dev/packages/dart_code_metrics) package. Credit for the content of these rules goes entirely to Dmitry Zhifarsky and the DCM team.
 
-## Features
+## Included Lints
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- no_equal_then_else
 
-## Getting started
+## Next Steps
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
-
-```dart
-const like = 'sample';
-```
-
-## Additional information
-
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+Only a few lints from ```package:dart_code_metrics``` are included so far. Once the Sidecar API has been mostly locked down, more lints may be implemented as a means of benchmarking and/or stress-testing the Sidecar system. If you want to track progress of the Sidecar ecosystem as a whole, you can subscribe to notifications via the Sidecar github repo.
