@@ -1,3 +1,7 @@
+## 0.1.0-dev.7
+
+- chore: Upgrade Sidecar dependency to v0.1.0-dev.15.
+
 ## 0.1.0-dev.6
 
 - test: added avoid_string_literal quick fix for Sidecar unit testing

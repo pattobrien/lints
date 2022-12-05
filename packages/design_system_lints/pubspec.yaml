@@ -1,6 +1,6 @@
 name: design_system_lints
 description: A collection of lints and code edits to enforce UI standards within a codebase. Built with Sidecar.
-version: 0.1.0-dev.6
+version: 0.1.0-dev.7
 repository: https://github.com/pattobrien/lints/tree/main/packages/design_system_lints
 homepage: https://github.com/pattobrien/lints/tree/main/packages/design_system_lints
 issue_tracker: https://github.com/pattobrien/lints/issues

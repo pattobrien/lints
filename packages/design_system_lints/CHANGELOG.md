@@ -1,3 +1,7 @@
+## 0.1.0-dev.7
+
+- chore: Updated to Sidecar 0.1.0-dev.15 APIs.
+
 ## 0.1.0-dev.6
 
 - chore: Updated to Sidecar 0.1.0-dev.11 APIs.
