@@ -1,10 +1,10 @@
 import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/source/line_info.dart';
+import 'package:intl_lints/src/constants.dart';
 import 'package:sidecar/sidecar.dart';
 import 'package:flutter_analyzer_utils/foundation.dart';
 
 const packageId = 'intl_lints';
-final kUri = Uri.parse('https://github.com/pattobrien/lints/');
 
 class HardcodedTextString extends Rule with Lint {
   static const _id = 'hardcoded_text_string';
@@ -12,7 +12,7 @@ class HardcodedTextString extends Rule with Lint {
   static const _correction = 'Prefer to use a translated Intl message instead.';
 
   @override
-  LintCode get code => LintCode(_id, package: packageId, url: kUri);
+  LintCode get code => const LintCode(_id, package: packageId, url: kUri);
 
   @override
   void initializeVisitor(NodeRegistry registry) {

@@ -8,8 +8,7 @@ class AlwaysPutControlBodyOnNewLine extends Rule with Lint {
 
   @override
   LintCode get code =>
-      LintCode(_id, package: kPackageId, url: kUri.resolve(_id));
-
+      const LintCode(_id, package: kPackageId, url: kUri + _id);
   @override
   void initializeVisitor(NodeRegistry registry) {
     registry

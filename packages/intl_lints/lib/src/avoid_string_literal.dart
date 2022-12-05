@@ -12,7 +12,7 @@ class AvoidStringLiteral extends Rule with Lint, QuickFix {
   static const _correction = 'Prefer to use a translated Intl message instead.';
 
   @override
-  LintCode get code => LintCode(_id, package: packageId, url: kUri);
+  LintCode get code => const LintCode(_id, package: packageId, url: kUri);
 
   @override
   void initializeVisitor(NodeRegistry registry) {

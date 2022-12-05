@@ -10,7 +10,7 @@ environment:
 
 dependencies:
   analyzer: ^4.2.0
-  sidecar: ^0.1.0-dev.11
+  sidecar: ^0.1.0-dev.15
   source_span: ^1.8.0
 
 dev_dependencies:

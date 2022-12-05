@@ -12,7 +12,7 @@ dependencies:
   analyzer: ^4.2.0
   flutter_analyzer_utils: ^0.2.0-dev.4
   glob: ^2.1.1
-  sidecar: ^0.1.0-dev.11
+  sidecar: ^0.1.0-dev.15
   source_span: ^1.9.1
 
 dev_dependencies:

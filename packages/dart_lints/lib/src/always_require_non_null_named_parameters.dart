@@ -10,9 +10,10 @@ import 'package:sidecar/sidecar.dart';
 import '../constants.dart';
 
 class AlwaysRequireNonNullNamedParameters extends Rule with Lint {
-  static const id = 'always_require_non_null_named_parameters';
+  static const _id = 'always_require_non_null_named_parameters';
   @override
-  LintCode get code => LintCode(id, package: kPackageId, url: kUri.resolve(id));
+  LintCode get code =>
+      const LintCode(_id, package: kPackageId, url: kUri + _id);
 
   @override
   void initializeVisitor(NodeRegistry registry) {
