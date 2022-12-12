@@ -1,6 +1,6 @@
 name: dart_lints
 description: Official Dart lints based on the Dart Style Guide, re-implemented for Sidecar.
-version: 0.1.0-dev.3
+version: 0.1.0-dev.4
 repository: https://github.com/pattobrien/lints/tree/main/packages/dart_lints
 homepage: https://github.com/pattobrien/lints/tree/main/packages/dart_lints
 issue_tracker: https://github.com/pattobrien/lints/issues
@@ -10,7 +10,7 @@ environment:
 
 dependencies:
   analyzer: ^4.2.0
-  sidecar: ^0.1.0-dev.15
+  sidecar: ^0.1.0-dev.16
   source_span: ^1.8.0
 
 dev_dependencies:
