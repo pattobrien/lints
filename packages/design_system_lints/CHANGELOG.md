@@ -1,3 +1,7 @@
+## 0.1.0-dev.8
+
+- fix: Remove ```flutter``` dependency
+
 ## 0.1.0-dev.7
 
 - chore: Updated to Sidecar 0.1.0-dev.15 APIs.

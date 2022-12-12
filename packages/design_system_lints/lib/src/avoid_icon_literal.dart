@@ -1,6 +1,5 @@
 import 'package:analyzer/dart/ast/ast.dart';
 import 'package:sidecar/sidecar.dart';
-import 'package:flutter/physics.dart';
 
 import 'constants.dart';
 
