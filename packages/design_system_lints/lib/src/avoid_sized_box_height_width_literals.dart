@@ -1,4 +1,5 @@
 import 'package:analyzer/dart/ast/ast.dart';
+import 'package:analyzer/dart/element/element.dart';
 import 'package:flutter_analyzer_utils/material.dart';
 import 'package:sidecar/sidecar.dart';
 
@@ -34,15 +35,32 @@ class AvoidSizedBoxHeightWidthLiterals extends Rule with Lint {
         }
         if (exp is PrefixedIdentifier) {
           //TODO: handle expressions like "SomeClass.staticInteger"
+          final annotatedElement = exp.identifier.staticElement;
+          if (!isAnnotated(annotatedElement)) {
+            reportAstNode(exp, message: _message, correction: _correction);
+          }
         }
         if (exp is SimpleIdentifier) {
-          // final element = exp.staticElement;
-          // final x = element;
-
-          //TODO: handle variables that are not declared
-          // within the allowed design system spec file
+          if (!isAnnotated(exp.staticElement)) {
+            reportAstNode(exp, message: _message, correction: _correction);
+          }
         }
       }
     }
   }
+}
+
+bool isAnnotated(Element? element) {
+  if (element == null) return false;
+  return element.thisOrAncestorMatching((p0) {
+        final meta = p0.metadata;
+        return meta.any((m) {
+          final annotationUri = Uri(
+              scheme: 'package',
+              path: 'design_system_annotations/design_system_annotations.dart');
+          final isEqual = m.element?.librarySource?.uri == annotationUri;
+          return isEqual;
+        });
+      }) !=
+      null;
 }

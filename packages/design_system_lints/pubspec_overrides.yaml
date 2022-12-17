@@ -3,3 +3,6 @@
 #   #     path: /Users/pattobrien/Development/sidecar/ecosystem/flutter_analyzer_utils/
 #   sidecar:
 #     path: /Users/pattobrien/Development/sidecar/packages/sidecar/
+
+# sidecar_lints:
+#   path: /Users/pattobrien/Development/sidecar/packages/sidecar_lints/

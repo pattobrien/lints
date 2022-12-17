@@ -14,5 +14,15 @@
                 "--debug",
             ]
         },
+        {
+            "name": "Sidecar Lint Debugger (design_system_lints)",
+            "program": "packages/design_system_lints/example/.dart_tool/sidecar/debug.dart",
+            "request": "launch",
+            "type": "dart",
+            "args": [
+                "--enable-vm-service",
+                "--debug",
+            ]
+        },
     ],
 }
