@@ -41,3 +41,9 @@ class DesignSystem {
 ///
 /// ```
 const designSystem = DesignSystem();
+
+class DesignSystemMember {
+  const DesignSystemMember();
+}
+
+const designSystemMember = DesignSystemMember();

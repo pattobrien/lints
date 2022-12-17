@@ -27,5 +27,6 @@ sidecar:
     - avoid_text_style_literal
     - avoid_border_radius_literal
     - avoid_sized_box_height_width_literals
+    - avoid_literal_on_member
     # - avoid_icon_literal
     # - avoid_color_literal

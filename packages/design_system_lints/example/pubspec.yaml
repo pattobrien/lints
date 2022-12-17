@@ -7,7 +7,9 @@ environment:
   sdk: ">=2.18.2 <3.0.0"
 
 dependencies:
-  design_system_annotations: ^0.1.0-dev.1
+  # design_system_annotations: ^0.1.0-dev.1
+  design_system_annotations:
+    path: ../../design_system_annotations
   flutter:
     sdk: flutter
   path: ^1.8.0

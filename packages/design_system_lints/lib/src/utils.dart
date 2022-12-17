@@ -14,3 +14,15 @@ bool hasDesignSystemAnnotation(Element? element) {
       }) !=
       null;
 }
+
+bool hasMemberAnnotation(Element? element) {
+  if (element == null) return false;
+  return element.metadata.any((m) {
+    if (m.element?.name != 'designSystemMember') return false;
+    final annotationUri = Uri(
+        scheme: 'package',
+        path: 'design_system_annotations/design_system_annotations.dart');
+    final isEqual = m.element?.librarySource?.uri == annotationUri;
+    return isEqual;
+  });
+}
