@@ -1,5 +1,5 @@
 import 'package:analyzer/dart/ast/ast.dart';
-import 'package:analyzer/dart/element/element.dart';
+import 'package:design_system_lints/src/utils.dart';
 import 'package:flutter_analyzer_utils/painting.dart';
 import 'package:sidecar/sidecar.dart';
 
@@ -10,15 +10,6 @@ class AvoidEdgeInsetsLiteral extends Rule with Lint {
   static const _id = 'avoid_edge_insets_literal';
   static const _message = 'Avoid hardcoded EdgeInsets values';
   static const _correction = 'Use values in design system spec instead';
-
-  static const _sizeArgs = [
-    'vertical',
-    'horizontal',
-    'left',
-    'right',
-    'top',
-    'bottom'
-  ];
 
   @override
   LintCode get code => LintCode(_id, package: kPackageId, url: kUrl);
@@ -31,38 +22,27 @@ class AvoidEdgeInsetsLiteral extends Rule with Lint {
   @override
   void visitInstanceCreationExpression(InstanceCreationExpression node) {
     final element = node.constructorName.staticElement;
+
     if (edgeInsetsType.isAssignableFromType(element?.returnType)) {
-      final args = node.argumentList.arguments
-          .whereType<NamedExpression>()
-          .where((e) => _sizeArgs.any((arg) => arg == e.name.label.name));
+      final arguments = node.argumentList.arguments;
 
-      for (var arg in args) {
-        final exp = arg.expression;
-        if (exp is DoubleLiteral || exp is IntegerLiteral) {
-          reportAstNode(exp, message: _message, correction: _correction);
+      for (var argument in arguments) {
+        if (argument is Literal) {
+          reportAstNode(argument, message: _message, correction: _correction);
         }
-        // e.g. CustomTheme.smallInsets()
-        if (exp is PrefixedIdentifier) {
-          //to do this computation, or is there a way to do this via ASTs only?
-          final declaration = exp.staticElement?.declaration;
-          if (declaration is PropertyAccessorElement) {
-            // final y = ele.declaration.constantInitializer;
-            final x = declaration.variable.isConstantEvaluated;
-            final y = x;
-          }
-          if (declaration is ParameterElement) {
-            final x = declaration;
-          }
-          final element = exp.staticType?.element2;
-          final node = declaration;
-          // final x = ele.canonicalElement;
-          //   final x =
-        }
-        // e.g. smallInsets()
-        if (exp is SimpleIdentifier) {
-          final element = exp.staticType?.element2;
-          // final x = element;
 
+        if (argument is NamedExpression) {
+          final exp = argument.expression;
+
+          if (exp is Literal) {
+            reportAstNode(exp, message: _message, correction: _correction);
+          }
+
+          if (exp is Identifier) {
+            if (!hasDesignSystemAnnotation(exp.staticElement)) {
+              reportAstNode(exp, message: _message, correction: _correction);
+            }
+          }
         }
       }
     }
