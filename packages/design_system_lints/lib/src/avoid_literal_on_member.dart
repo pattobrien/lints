@@ -25,10 +25,12 @@ class AvoidLiteralOnMember extends Rule with Lint {
 
     for (final argument in arguments) {
       final param = argument.staticParameterElement;
-      if (param is FieldFormalParameterElement) {
-        if (hasMemberAnnotation(param) || hasMemberAnnotation(param.field)) {
-          reportAstNode(argument, message: _message, correction: _correction);
-        }
+      if (param is! FieldFormalParameterElement) continue;
+
+      if (hasMemberAnnotation(param) || hasMemberAnnotation(param.field)) {
+        if (isDesignSystemExpression(argument) ?? true) continue;
+
+        reportAstNode(argument, message: _message, correction: _correction);
       }
     }
   }

@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 class CustomWidget extends StatelessWidget {
   const CustomWidget(this.widgetHeight);
 
-  const CustomWidget.named(this.widgetHeight);
+  const CustomWidget.unnamed(this.widgetHeight);
+  const CustomWidget.named({required this.widgetHeight});
 
   @designSystemMember
   final double widgetHeight;

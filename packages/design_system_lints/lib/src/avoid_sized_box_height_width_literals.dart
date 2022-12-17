@@ -31,10 +31,10 @@ class AvoidSizedBoxHeightWidthLiterals extends Rule with Lint {
 
       for (var argument in arguments) {
         final exp = argument.expression;
-        if (exp is DoubleLiteral || exp is IntegerLiteral) {
+        if (exp is Literal) {
           reportAstNode(exp, message: _message, correction: _correction);
         } else if (exp is Identifier) {
-          if (!hasDesignSystemAnnotation(exp.staticElement)) {
+          if (hasDesignSystemAnnotation(exp.staticElement) == false) {
             reportAstNode(exp, message: _message, correction: _correction);
           }
         }

@@ -32,17 +32,11 @@ class AvoidEdgeInsetsLiteral extends Rule with Lint {
         }
 
         if (argument is NamedExpression) {
-          final exp = argument.expression;
+          final expression = argument.expression;
 
-          if (exp is Literal) {
-            reportAstNode(exp, message: _message, correction: _correction);
-          }
+          if (isDesignSystemExpression(expression) ?? true) continue;
 
-          if (exp is Identifier) {
-            if (!hasDesignSystemAnnotation(exp.staticElement)) {
-              reportAstNode(exp, message: _message, correction: _correction);
-            }
-          }
+          reportAstNode(expression, message: _message, correction: _correction);
         }
       }
     }
