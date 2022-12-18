@@ -1,5 +1,9 @@
 ## 0.1.0-dev.8
 
+- fix: Remove ```flutter_analyzer_utils``` dependency
+
+## 0.1.0-dev.8
+
 - fix: Remove ```flutter``` dependency
 
 ## 0.1.0-dev.7

@@ -7,9 +7,7 @@ environment:
   sdk: ">=2.18.2 <3.0.0"
 
 dependencies:
-  # design_system_annotations: ^0.1.0-dev.1
-  design_system_annotations:
-    path: ../../design_system_annotations
+  design_system_annotations: ^0.1.0-dev.2
   flutter:
     sdk: flutter
   path: ^1.8.0
@@ -18,9 +16,3 @@ dev_dependencies:
   lints: ^2.0.0
   design_system_lints:
     path: ../
-
-dependency_overrides:
-  sidecar:
-    path: /Users/pattobrien/Development/sidecar/packages/sidecar/
-  sidecar_package_utilities:
-    path: /Users/pattobrien/Development/sidecar/packages/sidecar_package_utilities/
