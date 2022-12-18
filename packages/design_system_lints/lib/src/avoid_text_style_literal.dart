@@ -11,7 +11,7 @@ class AvoidTextStyleLiteral extends Rule with Lint {
   static const _correction = 'Use values in design system spec instead';
 
   @override
-  LintCode get code => LintCode(_id, package: kPackageId, url: kUrl);
+  LintCode get code => const LintCode(_id, package: kPackageId, url: kUrl);
 
   @override
   void initializeVisitor(NodeRegistry registry) {

@@ -1,8 +1,9 @@
-# dependency_overrides:
-#   #   flutter_analyzer_utils:
-#   #     path: /Users/pattobrien/Development/sidecar/ecosystem/flutter_analyzer_utils/
-#   sidecar:
-#     path: /Users/pattobrien/Development/sidecar/packages/sidecar/
-
+dependency_overrides:
+  #   flutter_analyzer_utils:
+  #     path: /Users/pattobrien/Development/sidecar/ecosystem/flutter_analyzer_utils/
+  sidecar:
+    path: /Users/pattobrien/Development/sidecar/packages/sidecar/
+  sidecar_package_utilities:
+    path: /Users/pattobrien/Development/sidecar/packages/sidecar_package_utilities/
 # sidecar_lints:
 #   path: /Users/pattobrien/Development/sidecar/packages/sidecar_lints/

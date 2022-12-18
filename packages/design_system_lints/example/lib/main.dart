@@ -9,17 +9,20 @@ class Example extends StatelessWidget {
 
   final localIcon = Icons.abc;
 
+  static final x = Color(000);
+
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 100,
       width: 100,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10.0),
+        // borderRadius: BorderRadius.circular(10.0),
         boxShadow: [
-          // Theme.of(context).appBarTheme,
+          // Theme.of(context).appBarTheme.,
           BoxShadow(
-            color: Colors.red,
+            // color: Colors.red,
+            color: Color(000),
           ),
         ],
       ),
@@ -52,6 +55,9 @@ class Example extends StatelessWidget {
               vertical: 9.0,
               horizontal: 10.0,
             ),
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(1, 2, 3, 4),
           ),
           CustomWidget(10.0),
           Text(
