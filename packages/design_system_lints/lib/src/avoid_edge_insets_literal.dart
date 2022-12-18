@@ -1,6 +1,5 @@
 import 'package:analyzer/dart/ast/ast.dart';
 import 'package:design_system_lints/src/utils.dart';
-import 'package:flutter_analyzer_utils/painting.dart';
 import 'package:sidecar/sidecar.dart';
 
 import 'constants.dart';
@@ -23,7 +22,7 @@ class AvoidEdgeInsetsLiteral extends Rule with Lint {
   void visitInstanceCreationExpression(InstanceCreationExpression node) {
     final returnType = node.constructorName.staticElement?.returnType;
 
-    if (!edgeInsetsType.isAssignableFromType(returnType)) return;
+    if (!edgeInsets.isAssignableFromType(returnType)) return;
 
     for (final arg in node.argumentList.arguments) {
       if (arg is Literal) {

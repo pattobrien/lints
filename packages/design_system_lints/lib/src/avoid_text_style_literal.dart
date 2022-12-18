@@ -1,5 +1,4 @@
 import 'package:analyzer/dart/ast/ast.dart';
-import 'package:flutter_analyzer_utils/services.dart';
 import 'package:sidecar/sidecar.dart';
 
 import 'constants.dart';
@@ -22,7 +21,7 @@ class AvoidTextStyleLiteral extends Rule with Lint {
   void visitInstanceCreationExpression(InstanceCreationExpression node) {
     final returnType = node.constructorName.staticElement?.returnType;
 
-    if (!textStyleType.isAssignableFromType(returnType)) return;
+    if (!textStyle.isAssignableFromType(returnType)) return;
 
     reportAstNode(node, message: _message, correction: _correction);
   }

@@ -1,6 +1,5 @@
 import 'package:analyzer/dart/ast/ast.dart';
 import 'package:design_system_lints/src/utils.dart';
-import 'package:flutter_analyzer_utils/material.dart';
 import 'package:sidecar/sidecar.dart';
 
 import 'constants.dart';
@@ -22,7 +21,7 @@ class AvoidSizedBoxHeightWidthLiterals extends Rule with Lint {
   @override
   void visitInstanceCreationExpression(InstanceCreationExpression node) {
     final returnType = node.constructorName.staticElement?.returnType;
-    final checkers = [sizedBoxType, containerType];
+    final checkers = [sizedBox, container];
     if (!TypeChecker.any(checkers).isAssignableFromType(returnType)) return;
 
     final argNames = ['width', 'height'];

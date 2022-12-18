@@ -10,9 +10,8 @@ environment:
 
 dependencies:
   analyzer: ^4.2.0
-  flutter_analyzer_utils: ^0.2.0-dev.4
-  sidecar: ^0.1.0-dev.17
-  sidecar_package_utilities: ^0.1.0-dev.6
+  sidecar: ^0.1.0-dev.18
+  sidecar_package_utilities: ^0.1.0-dev.7
   source_span: ^1.8.0
 
 dev_dependencies:

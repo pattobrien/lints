@@ -19,7 +19,6 @@ class Example extends StatelessWidget {
       decoration: BoxDecoration(
         // borderRadius: BorderRadius.circular(10.0),
         boxShadow: [
-          // Theme.of(context).appBarTheme.,
           BoxShadow(
             // color: Colors.red,
             color: Color(000),
@@ -57,7 +56,7 @@ class Example extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.fromLTRB(1, 2, 3, 4),
+            padding: EdgeInsets.fromLTRB(10.0, 20.0, 30.0, 40.0),
           ),
           CustomWidget(10.0),
           Text(

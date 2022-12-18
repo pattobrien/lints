@@ -1,5 +1,4 @@
 import 'package:analyzer/dart/ast/ast.dart';
-import 'package:flutter_analyzer_utils/painting.dart';
 import 'package:sidecar/sidecar.dart';
 
 import 'constants.dart';
@@ -22,7 +21,7 @@ class AvoidBorderRadiusLiteral extends Rule with Lint {
   void visitInstanceCreationExpression(InstanceCreationExpression node) {
     final returnType = node.constructorName.staticElement?.returnType;
 
-    if (!borderRadiusType.isAssignableFromType(returnType)) return;
+    if (!borderRadius.isAssignableFromType(returnType)) return;
 
     reportAstNode(node, message: _message, correction: _correction);
   }

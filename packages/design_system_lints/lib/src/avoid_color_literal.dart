@@ -1,6 +1,5 @@
 import 'package:analyzer/dart/ast/ast.dart';
-import 'package:sidecar/sidecar.dart' hide TypeChecker;
-import 'package:sidecar_package_utilities/sidecar_package_utilities.dart';
+import 'package:sidecar/sidecar.dart';
 
 import 'constants.dart';
 
@@ -20,10 +19,9 @@ class AvoidColorLiteral extends Rule with Lint {
 
   @override
   void visitInstanceCreationExpression(InstanceCreationExpression node) {
-    final typeChecker = TypeChecker.fromDartType('Color', dartPackage: 'ui');
     final returnType = node.constructorName.staticElement?.returnType;
 
-    if (!typeChecker.isAssignableFromType(returnType)) return;
+    if (!color.isAssignableFromType(returnType)) return;
 
     reportAstNode(node, message: _message, correction: _correction);
   }

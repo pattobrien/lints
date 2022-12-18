@@ -1,5 +1,4 @@
 import 'package:analyzer/dart/ast/ast.dart';
-import 'package:flutter_analyzer_utils/painting.dart';
 import 'package:sidecar/sidecar.dart';
 
 import 'constants.dart';
@@ -21,8 +20,7 @@ class AvoidBoxShadowLiteral extends Rule with Lint {
   @override
   void visitInstanceCreationExpression(InstanceCreationExpression node) {
     final returnType = node.constructorName.staticElement?.returnType;
-
-    if (!boxShadowType.isAssignableFromType(returnType)) return;
+    if (!boxShadow.isAssignableFromType(returnType)) return;
 
     reportAstNode(node, message: _message, correction: _correction);
   }

@@ -1,6 +1,5 @@
 import 'package:analyzer/dart/ast/ast.dart';
 import 'package:design_system_lints/src/utils.dart';
-import 'package:flutter_analyzer_utils/material.dart';
 import 'package:sidecar/sidecar.dart';
 
 import 'constants.dart';
@@ -21,7 +20,7 @@ class AvoidIconLiteral extends Rule with Lint {
 
   @override
   void visitPrefixedIdentifier(PrefixedIdentifier node) {
-    if (!iconDataType.isAssignableFromType(node.staticType)) return;
+    if (!iconData.isAssignableFromType(node.staticType)) return;
 
     if (hasDesignSystemAnnotation(node.staticElement) ?? true) return;
 
