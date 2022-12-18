@@ -21,24 +21,20 @@ class AvoidEdgeInsetsLiteral extends Rule with Lint {
 
   @override
   void visitInstanceCreationExpression(InstanceCreationExpression node) {
-    final element = node.constructorName.staticElement;
+    final returnType = node.constructorName.staticElement?.returnType;
 
-    if (edgeInsetsType.isAssignableFromType(element?.returnType)) {
-      final arguments = node.argumentList.arguments;
+    if (!edgeInsetsType.isAssignableFromType(returnType)) return;
 
-      for (var argument in arguments) {
-        if (argument is Literal) {
-          reportAstNode(argument, message: _message, correction: _correction);
-        }
-
-        if (argument is NamedExpression) {
-          final expression = argument.expression;
-
-          if (isDesignSystemExpression(expression) ?? true) continue;
-
-          reportAstNode(expression, message: _message, correction: _correction);
-        }
+    for (final arg in node.argumentList.arguments) {
+      if (arg is Literal) {
+        reportAstNode(arg, message: _message, correction: _correction);
+        continue;
       }
+
+      if (arg is! NamedExpression) continue;
+      if (isDesignSystemExpression(arg.expression) ?? true) continue;
+
+      reportAstNode(arg.expression, message: _message, correction: _correction);
     }
   }
 }

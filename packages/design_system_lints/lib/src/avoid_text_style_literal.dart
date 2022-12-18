@@ -20,9 +20,10 @@ class AvoidTextStyleLiteral extends Rule with Lint {
 
   @override
   void visitInstanceCreationExpression(InstanceCreationExpression node) {
-    final element = node.constructorName.staticElement;
-    if (textStyleType.isAssignableFromType(element?.returnType)) {
-      reportAstNode(node, message: _message, correction: _correction);
-    }
+    final returnType = node.constructorName.staticElement?.returnType;
+
+    if (!textStyleType.isAssignableFromType(returnType)) return;
+
+    reportAstNode(node, message: _message, correction: _correction);
   }
 }

@@ -21,9 +21,7 @@ class AvoidLiteralOnMember extends Rule with Lint {
 
   @override
   void visitInstanceCreationExpression(InstanceCreationExpression node) {
-    final arguments = node.argumentList.arguments;
-
-    for (final argument in arguments) {
+    for (final argument in node.argumentList.arguments) {
       final param = argument.staticParameterElement;
       if (param is! FieldFormalParameterElement) continue;
 

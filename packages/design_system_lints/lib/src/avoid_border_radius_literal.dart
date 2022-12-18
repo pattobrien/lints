@@ -20,9 +20,10 @@ class AvoidBorderRadiusLiteral extends Rule with Lint {
 
   @override
   void visitInstanceCreationExpression(InstanceCreationExpression node) {
-    final type = node.constructorName.staticElement?.returnType;
-    if (borderRadiusType.isAssignableFromType(type)) {
-      reportAstNode(node, message: _message, correction: _correction);
-    }
+    final returnType = node.constructorName.staticElement?.returnType;
+
+    if (!borderRadiusType.isAssignableFromType(returnType)) return;
+
+    reportAstNode(node, message: _message, correction: _correction);
   }
 }

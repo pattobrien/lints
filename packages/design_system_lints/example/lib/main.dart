@@ -7,11 +7,22 @@ class Example extends StatelessWidget {
 
   final double localValue = 100;
 
+  final localIcon = Icons.abc;
+
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 100,
       width: 100,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.0),
+        boxShadow: [
+          // Theme.of(context).appBarTheme,
+          BoxShadow(
+            color: Colors.red,
+          ),
+        ],
+      ),
       child: Column(
         children: [
           SizedBox(
@@ -39,10 +50,21 @@ class Example extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(
               vertical: 9.0,
-              horizontal: 10,
+              horizontal: 10.0,
             ),
           ),
           CustomWidget(10.0),
+          Text(
+            'data',
+            style: TextStyle(),
+          ),
+          Text(
+            'data',
+            style: Theme.of(context).textTheme.bodyLarge,
+          ),
+          Icon(Icons.abc),
+          Icon(MyDesignSystem.someIcon),
+          Icon(localIcon),
         ],
       ),
     );

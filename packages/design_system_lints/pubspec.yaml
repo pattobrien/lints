@@ -11,7 +11,7 @@ environment:
 dependencies:
   analyzer: ^4.2.0
   flutter_analyzer_utils: ^0.2.0-dev.4
-  sidecar: ^0.1.0-dev.16
+  sidecar: ^0.1.0-dev.17
   source_span: ^1.8.0
 
 dev_dependencies:
@@ -28,5 +28,5 @@ sidecar:
     - avoid_border_radius_literal
     - avoid_sized_box_height_width_literals
     - avoid_literal_on_member
-    # - avoid_icon_literal
+    - avoid_icon_literal
     # - avoid_color_literal
