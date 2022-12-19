@@ -1,5 +1,5 @@
-# dependency_overrides:
-#   sidecar:
-#     path: /Users/pattobrien/Development/sidecar/packages/sidecar/
-#   sidecar_package_utilities:
-#     path: /Users/pattobrien/Development/sidecar/packages/sidecar_package_utilities/
+dependency_overrides:
+  sidecar:
+    path: /Users/pattobrien/Development/sidecar/packages/sidecar/
+  sidecar_package_utilities:
+    path: /Users/pattobrien/Development/sidecar/packages/sidecar_package_utilities/
