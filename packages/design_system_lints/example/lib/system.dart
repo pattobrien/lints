@@ -8,6 +8,6 @@ class MyDesignSystem {
   static const someIcon = Icons.ice_skating;
 }
 
-// class SomeOtherClass {
-//   static final someOtherValue = 12.0;
-// }
+class SomeOtherClass {
+  static final someOtherValue = 12.0;
+}

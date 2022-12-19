@@ -4,14 +4,10 @@ import 'package:sidecar/test.dart';
 
 void main() {
   group('avoid_border_radius_literal:', () {
-    final rule = AvoidBorderRadiusLiteral();
-    test('no design system', () async {
-      await testLint(rule, contentBasic, [ExpectedLint(rule.code, 51, 27)]);
-    });
-
-    // test('with design system', () async {
-    //   await testLint(rule, contentWithDesignSystem, []);
-    // });
+    setUpRules([AvoidBorderRadiusLiteral()]);
+    ruleTest('no design system', contentBasic, [
+      ExpectedText('BorderRadius.circular(10.0)'),
+    ]);
   });
 }
 
