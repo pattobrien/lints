@@ -1,8 +1,26 @@
+import 'package:design_system_annotations/design_system_annotations.dart';
 import 'package:example/z_custom_widget.dart';
 import 'package:example/system.dart';
 import 'package:flutter/material.dart';
 
 // final x = BorderRadius.circular(10.0);
+final value = 1.0;
+final edgeInsets = EdgeInsets.all(DesignSystemX.value);
+final edgeInsetsOnly = EdgeInsets.only(top: 1.0);
+
+@designSystem
+class DesignSystemX {
+  static const value = 3.1;
+}
+
+class MyWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(value),
+    );
+  }
+}
 
 class Example extends StatelessWidget {
   const Example({super.key});

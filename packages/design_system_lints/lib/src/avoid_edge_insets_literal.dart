@@ -30,10 +30,14 @@ class AvoidEdgeInsetsLiteral extends Rule with Lint {
         continue;
       }
 
-      if (arg is! NamedExpression) continue;
-      if (isDesignSystemExpression(arg.expression) ?? true) continue;
+      if (isDesignSystemExpression(arg) ?? true) continue;
 
-      reportAstNode(arg.expression, message: _message, correction: _correction);
+      if (arg is NamedExpression) {
+        reportAstNode(arg.expression,
+            message: _message, correction: _correction);
+      } else {
+        reportAstNode(arg, message: _message, correction: _correction);
+      }
     }
   }
 }
