@@ -4,7 +4,7 @@ import 'package:sidecar/sidecar.dart';
 import 'constants.dart';
 
 /// Avoid using hardcoded text styles.
-class AvoidTextStyleLiteral extends Rule with Lint {
+class AvoidTextStyleLiteral extends LintRule {
   static const _id = 'avoid_text_style_literal';
   static const _message = 'Avoid hardcoded TextStyle values';
   static const _correction = 'Use values in design system spec instead';

@@ -3,15 +3,27 @@ import 'package:example/z_custom_widget.dart';
 import 'package:example/system.dart';
 import 'package:flutter/material.dart';
 
-// final x = BorderRadius.circular(10.0);
+final x = BorderRadius.circular(10.0);
 final value = 1.0;
-final edgeInsets = EdgeInsets.all(DesignSystemX.value);
 final edgeInsetsOnly = EdgeInsets.only(top: 1.0);
+final edgeInsetsEnum = EdgeInsets.only(top: Values.one.val);
+
+@designSystem
+enum Values {
+  one(1.0),
+  two(2.0);
+
+  const Values(this.val);
+
+  final double val;
+}
 
 @designSystem
 class DesignSystemX {
   static const value = 3.1;
 }
+
+final edgeInsets = EdgeInsets.all(DesignSystemX.value);
 
 class MyWidget extends StatelessWidget {
   @override
@@ -36,6 +48,7 @@ class Example extends StatelessWidget {
       height: 100,
       width: 100,
       decoration: BoxDecoration(
+        color: Theme.of(context).backgroundColor,
         boxShadow: [
           BoxShadow(color: Color(000)),
         ],
@@ -92,23 +105,23 @@ class Example extends StatelessWidget {
   }
 }
 
-// class Example2 extends StatelessWidget {
-//   const Example2({super.key});
+class Example2 extends StatelessWidget {
+  const Example2({super.key});
 
-//   final double localValue = 100;
+  final double localValue = 100;
 
-//   @override
-//   Widget build(BuildContext context) {
-//     final anotherWidget = CustomWidget.unnamed(localValue);
-//     final anotherWidget3 = CustomWidget.named(
-//       widgetHeight: MyDesignSystem.someValue,
-//     );
-//     final anotherWidget4 = CustomWidget.named(
-//       widgetHeight: localValue,
-//     );
-//     final anotherWidget2 = CustomWidget.unnamed(
-//       MyDesignSystem.someValue,
-//     );
-//     return CustomWidget(10.0);
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    final anotherWidget = CustomWidget.unnamed(localValue);
+    final anotherWidget3 = CustomWidget.named(
+      widgetHeight: MyDesignSystem.someValue,
+    );
+    final anotherWidget4 = CustomWidget.named(
+      widgetHeight: localValue,
+    );
+    final anotherWidget2 = CustomWidget.unnamed(
+      MyDesignSystem.someValue,
+    );
+    return CustomWidget(10.0);
+  }
+}

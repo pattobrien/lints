@@ -4,7 +4,7 @@ import 'package:sidecar/sidecar.dart';
 import 'constants.dart';
 
 /// Avoid hardcoding Color literals.
-class AvoidColorLiteral extends Rule with Lint {
+class AvoidColorLiteral extends LintRule {
   static const _id = 'avoid_color_literal';
   static const _message = 'Avoid Color literal';
   static const _correction = 'Use design system spec instead.';

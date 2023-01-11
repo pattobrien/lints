@@ -4,7 +4,7 @@ import 'package:sidecar/sidecar.dart';
 import 'constants.dart';
 
 /// Avoid hardcoding BoxShadows.
-class AvoidBoxShadowLiteral extends Rule with Lint {
+class AvoidBoxShadowLiteral extends LintRule {
   static const _id = 'avoid_box_shadow_literal';
   static const _message = 'Avoid BoxShadow literal';
   static const _correction = 'Use values in design system spec instead';

@@ -5,7 +5,7 @@ import 'package:sidecar/sidecar.dart';
 import 'constants.dart';
 
 /// Avoid using hardcoded EdgeInsets.
-class AvoidEdgeInsetsLiteral extends Rule with Lint {
+class AvoidEdgeInsetsLiteral extends LintRule {
   static const _id = 'avoid_edge_insets_literal';
   static const _message = 'Avoid hardcoded EdgeInsets values';
   static const _correction = 'Use values in design system spec instead';

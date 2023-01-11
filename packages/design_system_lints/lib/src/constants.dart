@@ -7,12 +7,12 @@ const kPackageId = 'design_system_lints';
 const kUrl =
     'https://github.com/pattobrien/lints/tree/main/packages/design_system_lints';
 
-final boxShadow = TypeChecker.fromName('BoxShadow', packageName: 'flutter');
-final textStyle = TypeChecker.fromName('TextStyle', packageName: 'flutter');
-final container = TypeChecker.fromName('Container', packageName: 'flutter');
-final sizedBox = TypeChecker.fromName('SizedBox', packageName: 'flutter');
-final edgeInsets = TypeChecker.fromName('EdgeInsets', packageName: 'flutter');
-final iconData = TypeChecker.fromName('IconData', packageName: 'flutter');
-final borderRadius =
+const boxShadow = TypeChecker.fromName('BoxShadow', packageName: 'flutter');
+const textStyle = TypeChecker.fromName('TextStyle', packageName: 'flutter');
+const container = TypeChecker.fromName('Container', packageName: 'flutter');
+const sizedBox = TypeChecker.fromName('SizedBox', packageName: 'flutter');
+const edgeInsets = TypeChecker.fromName('EdgeInsets', packageName: 'flutter');
+const iconData = TypeChecker.fromName('IconData', packageName: 'flutter');
+const borderRadius =
     TypeChecker.fromName('BorderRadius', packageName: 'flutter');
-final color = TypeChecker.fromDartType('Color', package: 'ui');
+const color = TypeChecker.fromDartType('Color', package: 'ui');

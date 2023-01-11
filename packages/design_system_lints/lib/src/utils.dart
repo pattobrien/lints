@@ -36,6 +36,13 @@ bool? isDesignSystemExpression(Expression? exp) {
       return false;
     }
   }
+  if (exp is PropertyAccess) {
+    // TODO: when this is true, we dont return true... therefore, for Enum marked with
+    // @designSystem, we get the wrong lint response
+    if (hasDesignSystemAnnotation(exp.propertyName.staticElement) == false) {
+      return false;
+    }
+  }
 
   if (exp is NamedExpression) {
     return isDesignSystemExpression(exp.expression);

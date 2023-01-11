@@ -5,7 +5,7 @@ import 'package:sidecar/sidecar.dart';
 import 'constants.dart';
 
 /// Avoid using hardcoded Icons.
-class AvoidIconLiteral extends Rule with Lint {
+class AvoidIconLiteral extends LintRule {
   static const _id = 'avoid_icon_literal';
   static const _message = 'Avoid using Icons or IconData literals';
   static const _correction = 'Use values in design system spec instead';

@@ -4,7 +4,7 @@ import 'package:sidecar/sidecar.dart';
 import 'constants.dart';
 
 /// Avoid hardcoding BorderRadius.
-class AvoidBorderRadiusLiteral extends Rule with Lint {
+class AvoidBorderRadiusLiteral extends LintRule {
   static const _id = 'avoid_border_radius_literal';
   static const _message = 'Avoid hardcoded BorderRadius values';
   static const _correction = 'Use values in design system spec instead';

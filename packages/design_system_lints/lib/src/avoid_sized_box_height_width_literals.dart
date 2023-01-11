@@ -5,7 +5,7 @@ import 'package:sidecar/sidecar.dart';
 import 'constants.dart';
 
 /// Avoid using hardcoded height and width in SizedBoxes.
-class AvoidSizedBoxHeightWidthLiterals extends Rule with Lint {
+class AvoidSizedBoxHeightWidthLiterals extends LintRule {
   static const _id = 'avoid_sized_box_height_width_literals';
   static const _message = 'Avoid using hardcoded height or width values.';
   static const _correction = 'Use values in design system spec instead';

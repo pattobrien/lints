@@ -6,7 +6,7 @@ import 'package:sidecar/sidecar.dart';
 import 'constants.dart';
 
 /// Avoid using hardcoded EdgeInsets.
-class AvoidLiteralOnMember extends Rule with Lint {
+class AvoidLiteralOnMember extends LintRule {
   static const _id = 'avoid_literal_on_member';
   static const _message = 'Avoid a literal for annotated members.';
   static const _correction = 'Use values in design system spec instead';

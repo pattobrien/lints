@@ -1,7 +1,7 @@
-# dependency_overrides:
-#   sidecar:
-#     path: /Users/pattobrien/Development/sidecar/packages/sidecar/
-#   sidecar_package_utilities:
-#     path: /Users/pattobrien/Development/sidecar/packages/sidecar_package_utilities/
-#   design_system_annotations:
-#     path: ../../design_system_annotations
+dependency_overrides:
+  sidecar:
+    path: /Users/pattobrien/Development/sidecar/packages/sidecar/
+  sidecar_package_utilities:
+    path: /Users/pattobrien/Development/sidecar/packages/sidecar_package_utilities/
+  design_system_annotations:
+    path: ../../design_system_annotations
