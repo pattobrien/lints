@@ -5,5 +5,5 @@ includes:
 lints:
   intl_lints:
     rules:
-      # string_literals:
+      avoid_string_literal:
       hardcoded_text_string:

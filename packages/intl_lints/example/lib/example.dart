@@ -7,6 +7,8 @@ class MyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final url = 'https://myserver.aws.com';
+
     return Column(
       children: [
         Text('some hardcoded string'), // LINT: hardcoded_text_string
