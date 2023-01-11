@@ -4,7 +4,7 @@ import 'package:sidecar/sidecar.dart';
 
 import '../constants.dart';
 
-class AlwaysDeclareReturnTypes extends Rule with Lint {
+class AlwaysDeclareReturnTypes extends LintRule {
   static const _id = 'always_declare_return_types';
 
   @override
