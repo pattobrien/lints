@@ -1,14 +1,17 @@
 import 'package:analyzer/dart/ast/ast.dart';
+import 'package:design_system_lints/src/utils.dart';
 import 'package:sidecar/sidecar.dart';
 
 import 'constants.dart';
 
 /// Avoid using hardcoded Icons.
-class AvoidIconLiteral extends Rule with Lint {
+class AvoidIconLiteral extends LintRule {
   static const _id = 'avoid_icon_literal';
+  static const _message = 'Avoid using Icons or IconData literals';
+  static const _correction = 'Use values in design system spec instead';
 
   @override
-  LintCode get code => LintCode(_id, package: kPackageId, url: kUrl);
+  LintCode get code => const LintCode(_id, package: kPackageId, url: kUrl);
 
   @override
   void initializeVisitor(NodeRegistry registry) {
@@ -17,31 +20,10 @@ class AvoidIconLiteral extends Rule with Lint {
 
   @override
   void visitPrefixedIdentifier(PrefixedIdentifier node) {
-    // final isIconData = _isIconData(node.prefix.staticElement);
-    // final type = node.identifier.staticType;
-    // if (iconDataType.isAssignableFromType(type)) {
-    //   final matchingAnnotation = node.thisOrAncestorMatching((astNode) {
-    //     final isMatch = astNode is AnnotatedNode &&
-    //         astNode.metadata.isNotEmpty &&
-    //         annotatedNodes.any((annotation) {
-    //           final isSameSource =
-    //               annotation.annotatedNode.toSourceSpan(unit) ==
-    //                   astNode.toSourceSpan(unit);
-    //           return isSameSource &&
-    //               annotation.input.packageName == kDesignSystemPackageId;
-    //         });
-    //     return isMatch;
-    //   });
+    if (!iconData.isAssignableFromType(node.staticType)) return;
 
-    //   if (matchingAnnotation == null) {
-    //     reportAstNode(
-    //       node,
-    //       message: 'Avoid IconData literal.',
-    //       correction: 'Use design system spec instead.',
-    //     );
-    //   }
-    // }
+    if (hasDesignSystemAnnotation(node.staticElement) ?? true) return;
 
-    return super.visitPrefixedIdentifier(node);
+    reportLint(node, message: _message, correction: _correction);
   }
 }

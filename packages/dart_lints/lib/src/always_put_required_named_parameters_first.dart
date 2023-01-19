@@ -28,7 +28,7 @@ m({@required a, b, c}) ;
 ```
 ''';
 
-class AlwaysPutRequiredNamedParametersFirst extends Rule with Lint {
+class AlwaysPutRequiredNamedParametersFirst extends LintRule {
   static const _id = 'always_put_required_named_parameters_first';
   static const _message =
       'Required named parameters should be before optional named parameters.';

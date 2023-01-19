@@ -6,7 +6,7 @@ import 'package:flutter_analyzer_utils/foundation.dart';
 
 const packageId = 'intl_lints';
 
-class HardcodedTextString extends Rule with Lint {
+class HardcodedTextString extends LintRule {
   static const _id = 'hardcoded_text_string';
   static const _message = 'Avoid any hardcoded Strings in Text widgets';
   static const _correction = 'Prefer to use a translated Intl message instead.';
@@ -51,7 +51,7 @@ bool isIgnored(LintResult lint, LineInfo lineInfo, String source) {
 
   final codes = codeContent.split(',').map((e) => e.trim()).toSet();
 
-  return codes.contains(lint.rule.id) || codes.contains('type=lint');
+  return codes.contains(lint.code.id) || codes.contains('type=lint');
 }
 
 Set<String> getAllIgnoredForFileCodes(String source) {

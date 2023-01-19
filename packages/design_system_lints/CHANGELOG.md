@@ -1,3 +1,11 @@
+## 0.1.0-dev.10
+
+- chore: Upgrade to Sidecar v0.1.0-dev.19
+
+## 0.1.0-dev.9
+
+- fix: Remove ```flutter_analyzer_utils``` dependency
+
 ## 0.1.0-dev.8
 
 - fix: Remove ```flutter``` dependency

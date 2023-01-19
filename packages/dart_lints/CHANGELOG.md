@@ -1,7 +1,10 @@
+## 0.1.0-dev.5
+
+- chore: Upgrade to latest sidecar dependency (v0.1.0-dev.19)
+
 ## 0.1.0-dev.4
 
 - chore: Upgrade to latest sidecar dependency (v0.1.0-dev.16)
-
 ## 0.1.0-dev.3
 
 - feat: Added urls for IDE hyperlinks to official Dart lint docs (dart-lang.github.io)

@@ -9,7 +9,7 @@ import 'package:sidecar/sidecar.dart';
 
 import '../constants.dart';
 
-class AlwaysRequireNonNullNamedParameters extends Rule with Lint {
+class AlwaysRequireNonNullNamedParameters extends LintRule {
   static const _id = 'always_require_non_null_named_parameters';
   @override
   LintCode get code =>

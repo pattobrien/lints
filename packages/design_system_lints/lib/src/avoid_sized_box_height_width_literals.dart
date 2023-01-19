@@ -1,16 +1,17 @@
 import 'package:analyzer/dart/ast/ast.dart';
-import 'package:flutter_analyzer_utils/material.dart';
+import 'package:design_system_lints/src/utils.dart';
 import 'package:sidecar/sidecar.dart';
 
 import 'constants.dart';
 
 /// Avoid using hardcoded height and width in SizedBoxes.
-class AvoidSizedBoxHeightWidthLiterals extends Rule with Lint {
+class AvoidSizedBoxHeightWidthLiterals extends LintRule {
   static const _id = 'avoid_sized_box_height_width_literals';
   static const _message = 'Avoid using hardcoded height or width values.';
   static const _correction = 'Use values in design system spec instead';
+
   @override
-  LintCode get code => LintCode(_id, package: kPackageId, url: kUrl);
+  LintCode get code => const LintCode(_id, package: kPackageId, url: kUrl);
 
   @override
   void initializeVisitor(NodeRegistry registry) {
@@ -19,30 +20,18 @@ class AvoidSizedBoxHeightWidthLiterals extends Rule with Lint {
 
   @override
   void visitInstanceCreationExpression(InstanceCreationExpression node) {
-    final element = node.constructorName.staticElement;
+    final returnType = node.constructorName.staticElement?.returnType;
+    final checkers = [sizedBox, container];
+    if (!TypeChecker.any(checkers).isAssignableFromType(returnType)) return;
 
-    if (sizedBoxType.isAssignableFromType(element?.returnType)) {
-      final args = node.argumentList.arguments
-          .whereType<NamedExpression>()
-          .where((e) =>
-              e.name.label.name == 'width' || e.name.label.name == 'height');
+    final argNames = ['width', 'height'];
+    final arguments = node.argumentList.arguments
+        .whereType<NamedExpression>()
+        .where((exp) => argNames.any((name) => name == exp.name.label.name));
 
-      for (var arg in args) {
-        final exp = arg.expression;
-        if (exp is DoubleLiteral || exp is IntegerLiteral) {
-          reportAstNode(exp, message: _message, correction: _correction);
-        }
-        if (exp is PrefixedIdentifier) {
-          //TODO: handle expressions like "SomeClass.staticInteger"
-        }
-        if (exp is SimpleIdentifier) {
-          // final element = exp.staticElement;
-          // final x = element;
-
-          //TODO: handle variables that are not declared
-          // within the allowed design system spec file
-        }
-      }
+    for (var arg in arguments) {
+      if (isDesignSystemExpression(arg.expression) ?? true) continue;
+      reportLint(arg.expression, message: _message, correction: _correction);
     }
   }
 }

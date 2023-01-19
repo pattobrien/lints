@@ -2,7 +2,7 @@ import 'package:analyzer/dart/ast/ast.dart';
 import 'package:dcm_lints/constants.dart';
 import 'package:sidecar/sidecar.dart';
 
-class NoEqualThenElse extends Rule with Lint {
+class NoEqualThenElse extends LintRule {
   @override
   LintCode get code => LintCode('no_equal_then_else', package: kPackage);
 

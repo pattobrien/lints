@@ -10,7 +10,7 @@ import 'package:sidecar/sidecar.dart';
 import '../constants.dart';
 import 'utils/ascii_utils.dart';
 
-class AlwaysSpecifyTypes extends Rule with Lint {
+class AlwaysSpecifyTypes extends LintRule {
   static const _id = 'always_specify_types';
   static const _message = 'Missing type annotation.';
   static const _correction = 'Try adding a type annotation.';

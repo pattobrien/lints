@@ -3,7 +3,7 @@ import 'package:sidecar/sidecar.dart';
 
 import '../constants.dart';
 
-class AlwaysPutControlBodyOnNewLine extends Rule with Lint {
+class AlwaysPutControlBodyOnNewLine extends LintRule {
   static const _id = 'always_put_control_body_on_new_line';
 
   @override
