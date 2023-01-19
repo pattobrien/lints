@@ -28,7 +28,7 @@ class AvoidLiteralOnMember extends LintRule {
       if (hasMemberAnnotation(param) || hasMemberAnnotation(param.field)) {
         if (isDesignSystemExpression(argument) ?? true) continue;
 
-        reportAstNode(argument, message: _message, correction: _correction);
+        reportLint(argument, message: _message, correction: _correction);
       }
     }
   }

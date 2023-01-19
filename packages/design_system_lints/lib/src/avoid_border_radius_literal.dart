@@ -23,6 +23,6 @@ class AvoidBorderRadiusLiteral extends LintRule {
 
     if (!borderRadius.isAssignableFromType(returnType)) return;
 
-    reportAstNode(node, message: _message, correction: _correction);
+    reportLint(node, message: _message, correction: _correction);
   }
 }

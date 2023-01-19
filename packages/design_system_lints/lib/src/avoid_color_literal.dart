@@ -18,24 +18,12 @@ class AvoidColorLiteral extends LintRule {
   }
 
   @override
-  void visitFieldDeclaration(FieldDeclaration node) {
-    // TODO: implement visitFieldDeclaration
-    super.visitFieldDeclaration(node);
-  }
-
-  @override
-  void visitPropertyAccess(PropertyAccess node) {
-    // TODO: implement visitPropertyAccess
-    super.visitPropertyAccess(node);
-  }
-
-  @override
   void visitVariableDeclarationStatement(VariableDeclarationStatement node) {
     final returnType = node.variables.type?.type;
 
     if (!color.isAssignableFromType(returnType)) return;
 
-    reportAstNode(node, message: _message, correction: _correction);
+    reportLint(node, message: _message, correction: _correction);
   }
 
   @override
@@ -44,6 +32,6 @@ class AvoidColorLiteral extends LintRule {
 
     if (!color.isAssignableFromType(returnType)) return;
 
-    reportAstNode(node, message: _message, correction: _correction);
+    reportLint(node, message: _message, correction: _correction);
   }
 }

@@ -5,8 +5,8 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Sidecar Lint Debugger",
-            "program": "packages/intl_lints/example/example_app/.dart_tool/sidecar/debug.dart",
+            "name": "Sidecar Lint Debugger (intl_lints)",
+            "program": "packages/intl_lints/example/.dart_tool/sidecar/debug.dart",
             "request": "launch",
             "type": "dart",
             "args": [

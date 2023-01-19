@@ -31,7 +31,7 @@ class AvoidSizedBoxHeightWidthLiterals extends LintRule {
 
     for (var arg in arguments) {
       if (isDesignSystemExpression(arg.expression) ?? true) continue;
-      reportAstNode(arg.expression, message: _message, correction: _correction);
+      reportLint(arg.expression, message: _message, correction: _correction);
     }
   }
 }

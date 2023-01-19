@@ -22,6 +22,6 @@ class AvoidBoxShadowLiteral extends LintRule {
     final returnType = node.constructorName.staticElement?.returnType;
     if (!boxShadow.isAssignableFromType(returnType)) return;
 
-    reportAstNode(node, message: _message, correction: _correction);
+    reportLint(node, message: _message, correction: _correction);
   }
 }

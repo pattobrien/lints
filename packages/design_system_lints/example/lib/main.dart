@@ -36,6 +36,7 @@ class MyWidget extends StatelessWidget {
 
 class Example extends StatelessWidget {
   const Example({super.key});
+  //
 
   final double localValue = 100;
 

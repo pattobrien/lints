@@ -24,6 +24,6 @@ class AvoidIconLiteral extends LintRule {
 
     if (hasDesignSystemAnnotation(node.staticElement) ?? true) return;
 
-    reportAstNode(node, message: _message, correction: _correction);
+    reportLint(node, message: _message, correction: _correction);
   }
 }

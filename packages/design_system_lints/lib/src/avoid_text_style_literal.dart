@@ -23,6 +23,6 @@ class AvoidTextStyleLiteral extends LintRule {
 
     if (!textStyle.isAssignableFromType(returnType)) return;
 
-    reportAstNode(node, message: _message, correction: _correction);
+    reportLint(node, message: _message, correction: _correction);
   }
 }

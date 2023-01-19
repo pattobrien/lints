@@ -7,3 +7,4 @@ lints:
     rules:
       avoid_string_literal:
       hardcoded_text_string:
+      bloc_outside_controller_layer:
