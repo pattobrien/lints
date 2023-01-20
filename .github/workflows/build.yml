@@ -24,7 +24,7 @@ jobs:
       matrix:
         runners:
           - ubuntu-latest
-          - windows-latest
+          # - windows-latest
         include:
           - runners: ubuntu-latest
             flutter_path: /opt/hostedtoolcache/flutter
