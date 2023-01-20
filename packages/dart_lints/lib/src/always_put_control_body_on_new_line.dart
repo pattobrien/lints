@@ -4,11 +4,14 @@ import 'package:sidecar/sidecar.dart';
 import '../constants.dart';
 
 class AlwaysPutControlBodyOnNewLine extends LintRule {
-  static const _id = 'always_put_control_body_on_new_line';
+  static const id = 'always_put_control_body_on_new_line';
+
+  static const message = 'Statement should be on a separate line.';
+  static const correction = 'Try moving the statement to a new line.';
 
   @override
-  LintCode get code =>
-      const LintCode(_id, package: kPackageId, url: kUri + _id);
+  LintCode get code => const LintCode(id, package: kPackageId, url: kUri + id);
+
   @override
   void initializeVisitor(NodeRegistry registry) {
     registry
@@ -52,11 +55,7 @@ class AlwaysPutControlBodyOnNewLine extends LintRule {
     final lineInfo = unit.lineInfo;
     if (lineInfo.getLocation(controlEnd).lineNumber ==
         lineInfo.getLocation(offsetFirstStatement).lineNumber) {
-      reportToken(
-        node.beginToken,
-        message: 'Statement should be on a separate line.',
-        correction: 'Try moving the statement to a new line.',
-      );
+      reportLint(node.beginToken, message: message, correction: correction);
     }
   }
 }

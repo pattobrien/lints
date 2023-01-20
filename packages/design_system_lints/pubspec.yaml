@@ -10,7 +10,7 @@ environment:
 
 dependencies:
   analyzer: ^4.2.0
-  sidecar: ^0.1.0-dev.19
+  sidecar: ^0.1.0-dev.20
 
 dev_dependencies:
   # flutter and design_system_annotations needed for testing
