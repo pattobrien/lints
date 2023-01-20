@@ -29,7 +29,7 @@ m({@required a, b, c}) ;
 ''';
 
 class AlwaysPutRequiredNamedParametersFirst extends LintRule {
-  static const _id = 'always_put_required_named_parameters_first';
+  static const id = 'always_put_required_named_parameters_first';
   static const _message =
       'Required named parameters should be before optional named parameters.';
   static const _correction =
@@ -37,8 +37,7 @@ class AlwaysPutRequiredNamedParametersFirst extends LintRule {
       'named parameters.';
 
   @override
-  LintCode get code =>
-      const LintCode(_id, package: kPackageId, url: kUri + _id);
+  LintCode get code => const LintCode(id, package: kPackageId, url: kUri + id);
 
   @override
   void initializeVisitor(NodeRegistry registry) {
@@ -54,7 +53,7 @@ class AlwaysPutRequiredNamedParametersFirst extends LintRule {
         if (nonRequiredSeen) {
           final name = param.name;
           if (name != null) {
-            reportToken(name, message: _message, correction: _correction);
+            reportLint(name, message: _message, correction: _correction);
           }
         }
       } else {
