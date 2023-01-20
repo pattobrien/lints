@@ -13,7 +13,10 @@ dependencies:
   sidecar: ^0.1.0-dev.19
 
 dev_dependencies:
-  build_runner: ^2.3.0
+  # flutter and design_system_annotations needed for testing
+  design_system_annotations: ^0.1.0-dev.2
+  flutter:
+    sdk: flutter
   lints: ^2.0.0
   test: ^1.16.0
 
