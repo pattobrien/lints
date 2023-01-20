@@ -24,12 +24,11 @@ jobs:
       matrix:
         runners:
           - ubuntu-latest
-          # - windows-latest
         include:
           - runners: ubuntu-latest
             flutter_path: /opt/hostedtoolcache/flutter
-          - runners: windows-latest
-            flutter_path: /Users/runner/hostedtoolcache/flutter
+          # - runners: windows-latest
+          #   flutter_path: /Users/runner/hostedtoolcache/flutter
         flutter-version:
           - "3.0.5"
         package_path:
