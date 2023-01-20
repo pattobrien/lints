@@ -54,8 +54,8 @@ jobs:
       - name: Run tests
         run: dart test --coverage="coverage"
 
-      # - name: Format code coverage
-      #   run: dart pub global run coverage:format_coverage --packages=.dart_tool/package_config.json --report-on=lib --lcov --check-ignore -o ./coverage/lcov.info -i ./coverage
+      - name: Format code coverage
+        run: dart pub global run coverage:format_coverage --packages=.dart_tool/package_config.json --report-on=lib --lcov --check-ignore -o ./coverage/lcov.info -i ./coverage
 
       # - name: Check Coverage
       #   uses: VeryGoodOpenSource/very_good_coverage@v2.1.0
@@ -64,5 +64,5 @@ jobs:
       #     min_coverage: 15
       #     exclude: "**/*.g.dart **/*.freezed.dart"
 
-      # - name: Upload coverage to codecov
-      #   uses: codecov/codecov-action@v3.1.1
+      - name: Upload coverage to codecov
+        uses: codecov/codecov-action@v3.1.1
