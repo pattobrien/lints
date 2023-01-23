@@ -22,6 +22,7 @@ class AvoidSizedBoxHeightWidthLiterals extends LintRule {
   void visitInstanceCreationExpression(InstanceCreationExpression node) {
     final returnType = node.constructorName.staticElement?.returnType;
     final checkers = [sizedBox, container];
+
     if (!TypeChecker.any(checkers).isAssignableFromType(returnType)) return;
 
     final argNames = ['width', 'height'];

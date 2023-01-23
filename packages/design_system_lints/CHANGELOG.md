@@ -1,3 +1,8 @@
+## 0.1.0-dev.11
+
+- chore: Upgrade APIs to Sidecar v0.1.0-dev.21
+- docs: Improved Readme with full example
+
 ## 0.1.0-dev.10
 
 - chore: Upgrade to Sidecar v0.1.0-dev.19

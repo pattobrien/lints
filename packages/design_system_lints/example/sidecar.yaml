@@ -13,5 +13,6 @@ lints:
       avoid_edge_insets_literal:
       avoid_literal_on_member:
       avoid_color_literal:
+      theme_creation:
 
 assists:
