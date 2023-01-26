@@ -47,3 +47,9 @@ class DesignSystemMember {
 }
 
 const designSystemMember = DesignSystemMember();
+
+class UnprotectedDesignMember {
+  const UnprotectedDesignMember();
+}
+
+const unprotectedDesignMember = UnprotectedDesignMember();
