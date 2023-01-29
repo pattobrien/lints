@@ -5,14 +5,30 @@ import 'package:test/test.dart';
 void main() {
   group('avoid_box_shadow_literal:', () {
     setUpRules([AvoidBoxShadowLiteral()]);
-    ruleTest('no design system', contentBasic, [
+
+    ruleTest('top level variables', '''
+import 'package:flutter/material.dart';
+
+final myShadow = BoxShadow();
+''', [
+      ExpectedText('myShadow'),
+    ]);
+
+    ruleTest('no design system', '''
+import 'package:flutter/material.dart';
+
+class MyWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        boxShadow: [BoxShadow()],
+      ),
+    );
+  }
+}
+''', [
       ExpectedText('BoxShadow()'),
     ]);
   });
 }
-
-const contentBasic = '''
-import 'package:flutter/material.dart';
-
-final x = BoxShadow();
-''';

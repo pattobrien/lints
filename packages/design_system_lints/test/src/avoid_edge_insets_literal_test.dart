@@ -20,7 +20,20 @@ void main() {
       ExpectedText('2.2'),
     ]);
 
-    ruleTest('EdgeInsets.all with variable', content6, [ExpectedText('value')]);
+    ruleTest('EdgeInsets.all with variable', '''
+import 'package:flutter/material.dart';
+
+final value = 1.0;
+
+class MyWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(value),
+    );
+  }
+}
+''', [ExpectedText('value')]);
 
     ruleTest(
         'EdgeInsets.only with variable', content7, [ExpectedText('value2')]);
@@ -60,19 +73,6 @@ class MyWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 2.1, vertical: 2.2),
-    );
-  }
-}
-''';
-
-const content6 = '''
-import 'package:flutter/material.dart';
-final value = 1.0;
-class MyWidget extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(value),
     );
   }
 }

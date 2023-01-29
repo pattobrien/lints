@@ -1,10 +1,12 @@
-import 'package:analyzer/dart/ast/ast.dart';
+import 'package:analyzer/dart/element/type.dart';
 import 'package:sidecar/sidecar.dart';
 
 import 'constants.dart';
+import 'generic_rule.dart';
+import 'utils.dart';
 
 /// Avoid hardcoding BoxShadows.
-class AvoidBoxShadowLiteral extends LintRule {
+class AvoidBoxShadowLiteral extends GenericDesignRule {
   static const _id = 'avoid_box_shadow_literal';
   static const _message = 'Avoid BoxShadow literal';
   static const _correction = 'Use values in design system spec instead';
@@ -13,15 +15,14 @@ class AvoidBoxShadowLiteral extends LintRule {
   LintCode get code => const LintCode(_id, package: kPackageId, url: kUrl);
 
   @override
-  void initializeVisitor(NodeRegistry registry) {
-    registry.addInstanceCreationExpression(this);
-  }
+  bool Function(DartType? type) get checker => isBoxShadowOrList;
 
   @override
-  void visitInstanceCreationExpression(InstanceCreationExpression node) {
-    final returnType = node.constructorName.staticElement?.returnType;
-    if (!boxShadow.isAssignableFromType(returnType)) return;
+  String get correction => _correction;
 
-    reportLint(node, message: _message, correction: _correction);
-  }
+  @override
+  String get message => _message;
 }
+
+bool isBoxShadowOrList(DartType? type) =>
+    isListOfType(boxShadow, type) || boxShadow.isAssignableFromType(type);

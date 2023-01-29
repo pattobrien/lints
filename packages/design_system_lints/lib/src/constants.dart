@@ -17,3 +17,4 @@ const iconData = TypeChecker.fromPackage('IconData', package: 'flutter');
 const borderRadius =
     TypeChecker.fromPackage('BorderRadius', package: 'flutter');
 const color = TypeChecker.fromDart('Color', package: 'ui');
+const radius = TypeChecker.fromDart('Radius', package: 'ui');

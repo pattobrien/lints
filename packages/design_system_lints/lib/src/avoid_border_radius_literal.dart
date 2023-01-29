@@ -1,10 +1,11 @@
-import 'package:analyzer/dart/ast/ast.dart';
+import 'package:analyzer/dart/element/type.dart';
 import 'package:sidecar/sidecar.dart';
 
 import 'constants.dart';
+import 'generic_rule.dart';
 
 /// Avoid hardcoding BorderRadius.
-class AvoidBorderRadiusLiteral extends LintRule {
+class AvoidBorderRadiusLiteral extends GenericDesignRule {
   static const _id = 'avoid_border_radius_literal';
   static const _message = 'Avoid hardcoded BorderRadius values';
   static const _correction = 'Use values in design system spec instead';
@@ -13,16 +14,11 @@ class AvoidBorderRadiusLiteral extends LintRule {
   LintCode get code => const LintCode(_id, package: kPackageId, url: kUrl);
 
   @override
-  void initializeVisitor(NodeRegistry registry) {
-    registry.addInstanceCreationExpression(this);
-  }
+  String get correction => _correction;
 
   @override
-  void visitInstanceCreationExpression(InstanceCreationExpression node) {
-    final returnType = node.constructorName.staticElement?.returnType;
+  String get message => _message;
 
-    if (!borderRadius.isAssignableFromType(returnType)) return;
-
-    reportLint(node, message: _message, correction: _correction);
-  }
+  @override
+  bool Function(DartType? type) get checker => radius.isAssignableFromType;
 }

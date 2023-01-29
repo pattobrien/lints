@@ -1,11 +1,11 @@
-import 'package:analyzer/dart/ast/ast.dart';
-import 'package:design_system_lints/src/utils.dart';
+import 'package:analyzer/dart/element/type.dart';
 import 'package:sidecar/sidecar.dart';
 
 import 'constants.dart';
+import 'generic_rule.dart';
 
 /// Avoid using hardcoded text styles.
-class AvoidTextStyleLiteral extends LintRule {
+class AvoidTextStyleLiteral extends GenericDesignRule {
   static const _id = 'avoid_text_style_literal';
   static const _message = 'Avoid hardcoded TextStyle values';
   static const _correction = 'Use values in design system spec instead';
@@ -14,16 +14,11 @@ class AvoidTextStyleLiteral extends LintRule {
   LintCode get code => const LintCode(_id, package: kPackageId, url: kUrl);
 
   @override
-  void initializeVisitor(NodeRegistry registry) {
-    registry.addInstanceCreationExpression(this);
-  }
+  bool Function(DartType? type) get checker => textStyle.isAssignableFromType;
 
   @override
-  void visitInstanceCreationExpression(InstanceCreationExpression node) {
-    final returnType = node.constructorName.staticElement?.returnType;
+  String get correction => _correction;
 
-    if (textStyle.isNotAssignableFromType(returnType)) return;
-
-    reportLint(node, message: _message, correction: _correction);
-  }
+  @override
+  String get message => _message;
 }

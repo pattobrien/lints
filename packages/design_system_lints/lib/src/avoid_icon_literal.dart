@@ -1,11 +1,11 @@
-import 'package:analyzer/dart/ast/ast.dart';
-import 'package:design_system_lints/src/utils.dart';
+import 'package:analyzer/dart/element/type.dart';
 import 'package:sidecar/sidecar.dart';
 
 import 'constants.dart';
+import 'generic_rule.dart';
 
 /// Avoid using hardcoded Icons.
-class AvoidIconLiteral extends LintRule {
+class AvoidIconLiteral extends GenericDesignRule {
   static const _id = 'avoid_icon_literal';
   static const _message = 'Avoid using Icons or IconData literals';
   static const _correction = 'Use values in design system spec instead';
@@ -14,16 +14,11 @@ class AvoidIconLiteral extends LintRule {
   LintCode get code => const LintCode(_id, package: kPackageId, url: kUrl);
 
   @override
-  void initializeVisitor(NodeRegistry registry) {
-    registry.addPrefixedIdentifier(this);
-  }
+  bool Function(DartType? type) get checker => iconData.isAssignableFromType;
 
   @override
-  void visitPrefixedIdentifier(PrefixedIdentifier node) {
-    if (!iconData.isAssignableFromType(node.staticType)) return;
+  String get correction => _correction;
 
-    if (hasDesignSystemAnnotation(node.staticElement) ?? true) return;
-
-    reportLint(node, message: _message, correction: _correction);
-  }
+  @override
+  String get message => _message;
 }

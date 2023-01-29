@@ -5,26 +5,24 @@ import 'package:sidecar/test.dart';
 void main() {
   group('avoid_border_radius_literal:', () {
     setUpRules([AvoidBorderRadiusLiteral()]);
-    ruleTest('no design system', contentBasic, [
-      ExpectedText('BorderRadius.circular(10.0)'),
-    ]);
-  });
-}
-
-const contentBasic = '''
+    ruleTest('no design system', '''
 import 'package:flutter/material.dart';
 
-final x = BorderRadius.circular(10.0);
-''';
+final myRadius = Radius.circular(10.0);
+''', [
+      ExpectedText('myRadius'),
+    ]);
 
-const contentWithDesignSystem = '''
+    ruleTest('design system', '''
 import 'package:flutter/material.dart';
 import 'package:design_system_annotations/design_system_annotations.dart';
 
-final x = BorderRadius.circular(MyDesignSystem.someValue);
+final x = BorderRadius.only(topLeft: MyDesignSystem.radius);
 
 @designSystem
 class MyDesignSystem {
-  static final someValue = 13.0;
+  static final radius = Radius.circular(10.0);
 }
-''';
+''', []);
+  });
+}

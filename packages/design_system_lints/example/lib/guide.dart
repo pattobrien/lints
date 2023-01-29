@@ -1,9 +1,11 @@
-import 'package:design_system_annotations/design_system_annotations.dart';
-import 'package:flutter/material.dart';
+// // import 'package:design_system_annotations/design_system_annotations.dart';
+// import 'package:design_system_annotations/design_system_annotations.dart';
+// import 'package:flutter/material.dart';
 
-// final large = 12.0;
+// // final large = 12.0;
 
-// final myTopLevelColor = Color(0x000);
+// // @designSystem
+// // final myTopLevelColor = Color(0x000);
 
 // // class MyWidget extends StatelessWidget {
 // //   @override
@@ -18,17 +20,18 @@ import 'package:flutter/material.dart';
 // //     );
 // //   }
 // // }
+
 // // @designSystem
 // // class CustomColors {
 // //   static const mycolor = Color(0x000);
 // // }
 
-// // // @designSystem
+// // @designSystem
 // // class CustomColors2 {
 // //   static const mycolor = Color(0x000);
 // // }
 
-// // @designSystem
+// // // @designSystem
 // // class DesignSystem {
 // //   static const small = 2.0;
 // //   static const medium = 4.0;
@@ -40,150 +43,181 @@ import 'package:flutter/material.dart';
 // //   static const myColor2 = CustomColors2.mycolor;
 // // }
 
-// // // @designSystem
+// // @designSystem
 // // class MyTheme {
+// //   static final red = Colors.red;
+
 // //   static final light = ThemeData(
 // //     primaryColor: Color(0x00000),
 // //   );
 // // }
 
-// // class MyWidget extends StatelessWidget {
-// //   MyWidget(this.color);
+// class ThemedWidget extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(color: Theme.of(context).backgroundColor);
+//   }
+// }
 
-// //   @designSystem
-// //   final Color color;
+// class MyWidget extends StatelessWidget {
+//   // MyWidget(this.color);
 
-// //   @override
-// //   Widget build(BuildContext context) {
-// //     return Container(
-// //       // padding: EdgeInsets.all(DesignSystem.large), // no lint
-// //       color: DesignSystem.designRed,
-// //     );
-// //   }
-// // }
+//   // @designSystem
+//   // final Color color;
 
-// // final classInstance = MyClass(color: Color(0x000));
-// // TopLevelVariable, VariableDeclarationList, VariableDeclaration, DeclaredSimpleIdentifier,
-// // InstanceCreationExp (MyClass(...)), ConstructorName (MyClass), NamedType (MyClass),
-// // SimpleIdentifier (MyClass)
-// // ArgumentList (color: Color(0x000)), NamedExpression (color: Color(0x000)),
-// // InstanceCreationExp (Color(0x000)),
-// // ConstructorName (Color), NamedType (Color),
-// // SimpleIdentifier (Color), ArgumentList (0x000), IntegerLiteral,
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       // padding: EdgeInsets.all(DesignSystem.large), // no lint
+//       // color: DesignSystem.designRed,
+//       // child: Text(
+//       //   '',
+//       //   style: Theme.of(context).textTheme.headline1,
+//       // ),
+//       color: Theme.of(context).backgroundColor,
+//       // MethodDeclaration, DeclaredSimpleIdentifier (build),
+//       // ...
+//       // ArgumentList ((color: Theme.of(context)..)),
+//       // NamedExpression (color: ...)
+//       // PropertyAccess (Theme.of(context).backgroundColor)
+//       // MethodInvocation (Theme.of(context)), SimpleIdent (Theme),
+//       // SimpleIdent (of), ..., SimpleIdent (backgroundColor)
+//     );
+//   }
+// }
 
-// // NOTE: ArgumentList was either a NamedExpression>InstanceCreation
-// // or went right to InstanceCreation
+// // // final classInstance = MyClass(color: Color(0x000));
+// // // TopLevelVariable, VariableDeclarationList, VariableDeclaration, DeclaredSimpleIdentifier,
+// // // InstanceCreationExp (MyClass(...)), ConstructorName (MyClass), NamedType (MyClass),
+// // // SimpleIdentifier (MyClass)
+// // // ArgumentList (color: Color(0x000)), NamedExpression (color: Color(0x000)),
+// // // InstanceCreationExp (Color(0x000)),
+// // // ConstructorName (Color), NamedType (Color),
+// // // SimpleIdentifier (Color), ArgumentList (0x000), IntegerLiteral,
 
-// // class MyClass {
-// //   const MyClass({required this.color});
-
-// //   // @designSystem
-// //   final Color color;
-// // }
+// // // NOTE: ArgumentList was either a NamedExpression>InstanceCreation
+// // // or went right to InstanceCreation
 
 // // class MyClassDto {
+// //   MyClass toDomain() => MyClass(
+// //         // color: Color(colorValue),
+// //         color: MyColors.blue,
+// //       );
+// //   // FormalParameterList,
+// //   // InstanceCreationExp (MyClass(color: ...)),
+// //   // ConstructorName, NamedType, SimpleIdentifier,
+// //   // ArgumentList ((color: Color(colorValue))),
+// //   // NamedExpression (color: Color(colorvalue)),
+// //   // Label,
 // //   MyClassDto(this.colorValue);
 
 // //   final int colorValue;
-
-// //   MyClass toDomain() => MyClass(Color(colorValue));
 
 // //   factory MyClassDto.fromDomain(MyClass myClass) =>
 // //       MyClassDto(myClass.color.value);
 // // }
 
-// @designSystem
-// class MyColors {
-//   static const blue = Colors.blue;
-// }
+// // class MyClass {
+// //   const MyClass({
+// //     required this.color,
+// //   });
 
-// class MyColorWidget extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(color: MyColors.blue);
-//   }
-// }
+// //   // @designSystem
+// //   final Color color;
+// // }
 
-// class CustomWidget extends StatelessWidget {
-//   const CustomWidget({required this.myColor});
+// // @designSystem
+// // class MyColors {
+// //   static const blue = Colors.blue;
+// // }
 
-//   final Color myColor;
+// // class MyColorWidget extends StatelessWidget {
+// //   @override
+// //   Widget build(BuildContext context) {
+// //     return Container(color: MyColors.blue);
+// //   }
+// // }
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(color: myColor);
-//   }
-// }
-// // ??, DeclaredSimpleIdentifier (CustomWidget), ExtendsClause,
-// // NamedType (StatelessWidget), SimpleIdentifier (StatelessW),
-// // ConstructorDeclaration (const CustomWidget({required...})),
-// // SimpleIdentifier, FormalParameterList, DefaultFormalParameter,
-// // FieldFormalParam, DeclaredSimpleIdent (myColor), EmptyFunctionBody (;),
-// //
-// // FieldDeclaration (final Color myColor), VariableDeclarationList,
-// // NamedType (Color), SimpleIdentifier, VariableDeclaration (myColor),
-// // DeclaredSimpleIdentifier (myColor),
-// //
-// // MethodDeclaration (build method), ....
-// //...
-// // InstanceCreationExp (Container(...)),
+// // class CustomWidget extends StatelessWidget {
+// //   const CustomWidget({required this.myColor});
 
-// class UserProfile {
-//   const UserProfile(this.name, {this.favoriteColor = Colors.blue});
-//   final String name;
-//   final Color favoriteColor;
-// }
+// //   final Color myColor;
 
-// class CustomWidget extends StatelessWidget {
-//   const CustomWidget({this.myColor = Colors.red});
+// //   @override
+// //   Widget build(BuildContext context) {
+// //     return Container(color: myColor);
+// //   }
+// // }
+// // // ??, DeclaredSimpleIdentifier (CustomWidget), ExtendsClause,
+// // // NamedType (StatelessWidget), SimpleIdentifier (StatelessW),
+// // // ConstructorDeclaration (const CustomWidget({required...})),
+// // // SimpleIdentifier, FormalParameterList, DefaultFormalParameter,
+// // // FieldFormalParam, DeclaredSimpleIdent (myColor), EmptyFunctionBody (;),
+// // //
+// // // FieldDeclaration (final Color myColor), VariableDeclarationList,
+// // // NamedType (Color), SimpleIdentifier, VariableDeclaration (myColor),
+// // // DeclaredSimpleIdentifier (myColor),
+// // //
+// // // MethodDeclaration (build method), ....
+// // //...
+// // // InstanceCreationExp (Container(...)),
 
-//   final Color myColor;
+// // class UserProfile {
+// //   const UserProfile(this.name, {this.favoriteColor = Colors.blue});
+// //   final String name;
+// //   final Color favoriteColor;
+// // }
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(color: myColor);
-//   }
-// }
+// // class CustomWidget extends StatelessWidget {
+// //   const CustomWidget({this.myColor = Colors.red});
 
-class CustomWidget extends StatelessWidget {
-  const CustomWidget({Color? color}) : myColor = color ?? const Color(0x000);
+// //   final Color myColor;
 
-  final Color myColor;
+// //   @override
+// //   Widget build(BuildContext context) {
+// //     return Container(color: myColor);
+// //   }
+// // }
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(color: myColor);
-  }
-}
+// // class CustomWidget extends StatelessWidget {
+// //   const CustomWidget({Color? color}) : myColor = color ?? const Color(0x000);
 
-// ConstructorFieldInitializer (myColor = color ?? const Color(0x000))
-// SimplIde (myColor), BinaryExp (color ?? const Color(0x000)), 
-// SimpleIdent (color), InstanceCreationExp (const Color(0x000)),
+// //   final Color myColor;
 
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       theme: ThemeData(
-//         primaryColor: MyColors.blue,
-//         secondaryHeaderColor: Colors.red,
-//         scaffoldBackgroundColor: myTopLevelColor,
-//       ),
-//     );
-//   }
-// }
+// //   @override
+// //   Widget build(BuildContext context) {
+// //     return Container(color: myColor);
+// //   }
+// // }
 
-// class ConditionalWidget extends StatelessWidget {
-//   const ConditionalWidget({
-//     required this.myColor,
-//     this.isValue = true,
-//   });
+// // ConstructorFieldInitializer (myColor = color ?? const Color(0x000))
+// // SimplIde (myColor), BinaryExp (color ?? const Color(0x000)),
+// // SimpleIdent (color), InstanceCreationExp (const Color(0x000)),
 
-//   final Color myColor;
-//   final bool isValue;
+// // class MyApp extends StatelessWidget {
+// //   @override
+// //   Widget build(BuildContext context) {
+// //     return MaterialApp(
+// //       theme: ThemeData(
+// //         primaryColor: MyColors.blue,
+// //         secondaryHeaderColor: Colors.red,
+// //         scaffoldBackgroundColor: myTopLevelColor,
+// //       ),
+// //     );
+// //   }
+// // }
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(color: isValue ? myColor : Color(0x000));
-//   }
-// }
+// // class ConditionalWidget extends StatelessWidget {
+// //   const ConditionalWidget({
+// //     required this.myColor,
+// //     this.isValue = true,
+// //   });
+
+// //   final Color myColor;
+// //   final bool isValue;
+
+// //   @override
+// //   Widget build(BuildContext context) {
+// //     return Container(color: isValue ? myColor : myTopLevelColor);
+// //   }
+// // }
