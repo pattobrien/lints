@@ -4,7 +4,7 @@ import 'package:design_system_lints/src/utils.dart';
 import 'package:sidecar/sidecar.dart';
 
 abstract class GenericDesignRule extends LintRule {
-  bool Function(DartType? staticType) get checker;
+  bool Function(DartType? type) get checker;
   String get message;
   String get correction;
 

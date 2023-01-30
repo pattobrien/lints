@@ -1,11 +1,11 @@
 library design_system_lints;
 
-export 'src/avoid_color_literal.dart';
-export 'src/avoid_edge_insets_literal.dart';
-export 'src/avoid_icon_literal.dart';
-export 'src/avoid_border_radius_literal.dart';
-export 'src/avoid_box_shadow_literal.dart';
-export 'src/avoid_text_style_literal.dart';
-export 'src/avoid_sized_box_height_width_literals.dart';
+export 'src/color.dart';
+export 'src/edge_insets.dart';
+export 'src/icon.dart';
+export 'src/radius.dart';
+export 'src/box_shadow.dart';
+export 'src/text_style.dart';
+export 'src/box_constraints.dart';
 export 'src/avoid_literal_on_member.dart';
-export 'src/theme_creation.dart';
+export 'src/theme_data.dart';

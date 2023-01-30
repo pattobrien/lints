@@ -4,7 +4,7 @@ import 'package:test/test.dart';
 
 void main() {
   group('avoid_color_literal', () {
-    setUpRules([AvoidColorLiteral()]);
+    setUpRules([Color()]);
 
     ruleTest('widget uses design system color', '''
 import 'package:design_system_annotations/design_system_annotations.dart';

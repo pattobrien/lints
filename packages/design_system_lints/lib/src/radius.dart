@@ -4,10 +4,10 @@ import 'package:sidecar/sidecar.dart';
 import 'constants.dart';
 import 'generic_rule.dart';
 
-/// Avoid hardcoding BorderRadius.
-class AvoidBorderRadiusLiteral extends GenericDesignRule {
-  static const _id = 'avoid_border_radius_literal';
-  static const _message = 'Avoid hardcoded BorderRadius values';
+/// Avoid hardcoding Radius.
+class Radius extends GenericDesignRule {
+  static const _id = 'radius';
+  static const _message = 'Avoid hardcoded Radius values';
   static const _correction = 'Use values in design system spec instead';
 
   @override

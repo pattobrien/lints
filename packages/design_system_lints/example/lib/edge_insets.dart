@@ -1,5 +1,4 @@
 import 'package:example/exports/dimensions.dart';
-import 'package:example/exports/shadows.dart';
 import 'package:flutter/material.dart';
 
 class MyWidget extends StatelessWidget {

@@ -4,7 +4,7 @@ import 'package:test/test.dart';
 
 void main() {
   group('avoid_edge_insets_literal:', () {
-    setUpRules([AvoidEdgeInsetsLiteral()]);
+    setUpRules([EdgeInsets()]);
 
     ruleTest('EdgeInsets.all', content3, [ExpectedText('2.0')]);
 

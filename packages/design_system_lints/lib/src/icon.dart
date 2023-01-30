@@ -5,10 +5,11 @@ import 'constants.dart';
 import 'generic_rule.dart';
 
 /// Avoid using hardcoded Icons.
-class AvoidIconLiteral extends GenericDesignRule {
-  static const _id = 'avoid_icon_literal';
-  static const _message = 'Avoid using Icons or IconData literals';
-  static const _correction = 'Use values in design system spec instead';
+class Icon extends GenericDesignRule {
+  static const _id = 'icon';
+  static const _message = 'Icon isn\'t from design system.';
+  static const _correction =
+      'Prefer to use values from a design system spec instead.';
 
   @override
   LintCode get code => const LintCode(_id, package: kPackageId, url: kUrl);

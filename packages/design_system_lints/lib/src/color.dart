@@ -4,8 +4,8 @@ import 'constants.dart';
 import 'generic_rule.dart';
 
 /// Avoid hardcoding Color literals.
-class AvoidColorLiteral extends GenericDesignRule {
-  static const _id = 'avoid_color_literal';
+class Color extends GenericDesignRule {
+  static const _id = 'color';
   static const _message = 'Avoid Color literal';
   static const _correction = 'Use design system spec instead.';
 

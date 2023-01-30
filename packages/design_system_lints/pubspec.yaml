@@ -1,6 +1,6 @@
 name: design_system_lints
 description: A collection of lints and code edits to enforce UI standards within a codebase. Built with Sidecar.
-version: 0.1.0-dev.11
+version: 0.1.0-dev.12
 repository: https://github.com/pattobrien/lints/tree/main/packages/design_system_lints
 homepage: https://github.com/pattobrien/lints/tree/main/packages/design_system_lints
 issue_tracker: https://github.com/pattobrien/lints/issues
@@ -23,12 +23,11 @@ dev_dependencies:
 
 sidecar:
   lints:
-    - avoid_edge_insets_literal
-    - avoid_box_shadow_literal
-    - avoid_text_style_literal
-    - avoid_border_radius_literal
-    - avoid_sized_box_height_width_literals
-    - avoid_literal_on_member
-    - avoid_icon_literal
-    - avoid_color_literal
-    - theme_creation
+    - box_constraints
+    - box_shadow
+    - color
+    - edge_insets
+    - icon
+    - radius
+    - text_style
+    - theme_data

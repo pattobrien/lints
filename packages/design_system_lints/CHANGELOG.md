@@ -1,3 +1,8 @@
+## 0.1.0-dev.12
+
+- feat: Covered all use cases
+- refactor: Changed lint id codes to be more concise
+
 ## 0.1.0-dev.11
 
 - chore: Upgrade APIs to Sidecar v0.1.0-dev.21

@@ -4,7 +4,7 @@ import 'package:test/test.dart';
 
 void main() {
   group('avoid_box_shadow_literal:', () {
-    setUpRules([AvoidBoxShadowLiteral()]);
+    setUpRules([BoxShadow()]);
 
     ruleTest('top level variables', '''
 import 'package:flutter/material.dart';

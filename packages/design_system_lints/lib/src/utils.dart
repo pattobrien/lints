@@ -1,5 +1,4 @@
 import 'package:analyzer/dart/ast/ast.dart';
-import 'package:analyzer/dart/ast/visitor.dart';
 import 'package:analyzer/dart/element/element.dart';
 import 'package:analyzer/dart/element/type.dart';
 import 'package:sidecar/type_checker.dart';
@@ -18,22 +17,12 @@ bool hasMemberAnnotation(Element? element) {
       .any((m) => designSystemMember.isAssignableFrom(m.element));
 }
 
-// need to change this function to return a list of expressions that are
-// not design system expressions
 bool? isDesignSystemExpression(Expression? exp) {
   if (exp is Literal) return false;
   if (exp is ConditionalExpression) {
-    // exp.thenExpression;
     return isDesignSystemExpression(exp.elseExpression);
   }
   if (exp is Identifier) {
-    // we may have to implement something "hacky" here.
-    // where we reject any identifier from the current package that doesnt have
-    // an annotation,
-    // and otherwise, if the colors are from Flutter, we reject those as well
-
-    // or.. what if we dont check for annotation if the Identifier is coming
-    // from an enclosing element ? this would solve the CustomWidget test case
     final fieldElement = exp.staticElement?.nonSynthetic;
     if (fieldElement is FieldElement) {
       if (!fieldElement.hasInitializer) {
@@ -126,7 +115,7 @@ bool hasAnnotatedProperty(Element? staticElement) {
 
 bool isAncestorDesignSystem(AstNode? node) {
   if (node == null) return false;
-  final hasAncestor = node.thisOrAncestorMatching((p0) {
+  return node.thisOrAncestorMatching((p0) {
         if (p0 is Declaration) {
           if (hasDesignSystemAnnotation(p0.declaredElement) ?? false) {
             return true;
@@ -135,7 +124,6 @@ bool isAncestorDesignSystem(AstNode? node) {
         return false;
       }) !=
       null;
-  return hasAncestor;
 }
 
 const designSystemMember = TypeChecker.fromPackage(
@@ -147,33 +135,6 @@ const designSystem = TypeChecker.fromPackage(
   'designSystem',
   package: 'design_system_annotations',
 );
-
-// Iterable<Expression> checker(
-//   TypeChecker checker,
-//   DartType? type,
-//   List<Expression> nodes,
-// ) sync* {
-//   for (final node in nodes) {
-//     if (checker.isNotAssignableFromType(type)) continue;
-//     if (isAncestorDesignSystem(node)) return;
-//     if (isAncestorDesignSystem(node)) return;
-//     yield* nonDesignSystemExpressions(node);
-//   }
-// }
-
-// void fieldDeclaration(
-//   TypeChecker checker,
-//   FieldDeclaration node,
-//   void Function(Expression exp) func,
-// ) {
-//   for (final v in node.fields.variables) {
-//     if (checker.isNotAssignableFromType(v.declaredElement2?.type)) continue;
-//     if (isAncestorDesignSystem(node)) return;
-//     for (final expression in nonDesignSystemExpressions(v.name)) {
-//       func(expression);
-//     }
-//   }
-// }
 
 bool isListOfType(TypeChecker checker, DartType? type) {
   if (listType.isNotAssignableFromType(type)) return false;

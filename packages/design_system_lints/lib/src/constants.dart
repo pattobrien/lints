@@ -14,7 +14,5 @@ const container = TypeChecker.fromPackage('Container', package: 'flutter');
 const sizedBox = TypeChecker.fromPackage('SizedBox', package: 'flutter');
 const edgeInsets = TypeChecker.fromPackage('EdgeInsets', package: 'flutter');
 const iconData = TypeChecker.fromPackage('IconData', package: 'flutter');
-const borderRadius =
-    TypeChecker.fromPackage('BorderRadius', package: 'flutter');
 const color = TypeChecker.fromDart('Color', package: 'ui');
 const radius = TypeChecker.fromDart('Radius', package: 'ui');

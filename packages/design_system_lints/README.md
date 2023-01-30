@@ -13,20 +13,27 @@ The concept of a design system is simple: define the basic UI building blocks fo
 For more info on the benefits of using a design system, take a look at [this great article by supernova.io](https://www.supernova.io/blog/what-is-a-design-system), a design system service built with Flutter.
 
 ## Available Rules
+```yaml
+# copy these lints to sidecar.yaml file
+lints:
+  design_system_lints:
+    rules:
+      box_constraints:
+      box_shadow:
+      color:
+      edge_insets:
+      icon:
+      radius:
+      text_style:
+      theme_data:
 
-- Colors (rule: `avoid_color_literal`)
-- Icons (rule: `avoid_icon_literal`)
-- SizedBox width and height (rule: `avoid_sized_box_height_width_literals`)
-- EdgeInsets (i.e. Padding and Margins) (rule: `avoid_sized_box_height_width_literals`)
-- TextStyle widgets (rule: `avoid_text_style_literal`)
-- Border Radius (rule: `avoid_border_radius_literal`)
-- Box Shadows (rule: `avoid_box_shadow_literal`)
+```
 
 ## Usage
 
 To enable the above rules in your project, follow the usage guide over at [sidecaranalyzer.dev](https://sidecaranalyzer.dev/docs/usage/intial_setup).
 
-Once the rules are enabled, the lints are designed to show info messages wherever design system rules are not properly followed. For example, the `avoid_edge_insets_literal` rule enforces a standard usage of padding and margins by locating `EdgeInsets` code uses sizes defined outside of a design system.
+Once the rules are enabled, the lints are designed to show info messages wherever design system rules are not properly followed. For example, the `edge_insets` rule enforces a standard usage of padding and margins by locating `EdgeInsets` code uses sizes defined outside of a design system.
 
 ```dart
 import 'package:flutter/material.dart';
