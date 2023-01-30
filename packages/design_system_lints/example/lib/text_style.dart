@@ -1,19 +1,19 @@
 import 'package:design_system_annotations/design_system_annotations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class MyWidget extends StatelessWidget {
+class MyWidget extends ConsumerWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Container(
-      child: Text(
-        '',
-        style: MyTextTheme.style,
-      ),
+      color: ref.watch(someProvider).color,
     );
   }
 }
 
+final someProvider = Provider((ref) => MyTextTheme());
+
 @designSystem
 class MyTextTheme {
-  static const style = TextStyle();
+  final color = Color(0x000);
 }

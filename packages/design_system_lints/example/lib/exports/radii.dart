@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
+// import 'package:flutter/material.dart';
 
-class AppRadii {
-  static const token1 = BorderRadius.all(Radius.circular(4));
+// class AppRadii {
+//   static const token1 = BorderRadius.all(Radius.circular(4));
 
-  AppRadii._();
-}
+//   AppRadii._();
+// }

@@ -84,34 +84,14 @@ Iterable<Expression> nonDesignSystemExpressions(CollectionElement? exp) sync* {
     exp.writeElement;
   }
   if (exp is Identifier) {
-    final ele = exp.staticElement?.nonSynthetic;
-    if (ele is PropertyInducingElement) {
-      // handle property
-      final get = ele.getter?.variable;
-      final hasInit = ele.hasInitializer;
-    }
-
-    // we may have to implement something "hacky" here.
-    // where we reject any identifier from the current package that doesnt have
-    // an annotation,
-    // and otherwise, if the colors are from Flutter, we reject those as well
-
-    // or.. what if we dont check for annotation if the Identifier is coming
-    // from an enclosing element ? this would solve the CustomWidget test case
-    final fieldElement = exp.staticElement?.nonSynthetic;
-    if (fieldElement is FieldElement && !fieldElement.hasInitializer) {
-    } else if (hasDesignSystemAnnotation(fieldElement) == false) {
-      yield exp;
+    final staticElement = exp.staticElement?.nonSynthetic;
+    if (staticElement is PropertyInducingElement) {
+      if (hasAnnotatedProperty(staticElement)) yield exp;
     }
   }
   if (exp is PropertyAccess) {
-    // TODO: when this is true, we dont return true... therefore, for Enum marked with
-    // @designSystem, we get the wrong lint response
-    final target = nonDesignSystemExpressions(exp.target);
-    final prop = hasDesignSystemAnnotation(exp.propertyName.staticElement);
-    if (hasDesignSystemAnnotation(exp.propertyName.staticElement) == false) {
-      yield exp;
-    }
+    final staticElement = exp.propertyName.staticElement?.nonSynthetic;
+    if (hasAnnotatedProperty(staticElement)) yield exp;
   }
 
   if (exp is NamedExpression) {
@@ -121,6 +101,27 @@ Iterable<Expression> nonDesignSystemExpressions(CollectionElement? exp) sync* {
   if (exp is InstanceCreationExpression) {
     yield exp;
   }
+}
+
+bool hasAnnotatedProperty(Element? staticElement) {
+  if (staticElement is PropertyInducingElement) {
+    if (staticElement.hasInitializer) {
+      if (hasDesignSystemAnnotation(staticElement) == false) {
+        return true;
+      }
+    }
+  } else if (staticElement is PropertyAccessorElement) {
+    if (staticElement.variable.hasInitializer) {
+      if (hasDesignSystemAnnotation(staticElement) == false) {
+        return true;
+      }
+    }
+  } else {
+    if (hasDesignSystemAnnotation(staticElement) == false) {
+      return true;
+    }
+  }
+  return false;
 }
 
 bool isAncestorDesignSystem(AstNode? node) {
