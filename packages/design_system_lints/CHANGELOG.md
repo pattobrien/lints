@@ -2,6 +2,7 @@
 
 - feat: Covered all use cases
 - refactor: Changed lint id codes to be more concise
+- docs: Improved setup instructions in docs
 
 ## 0.1.0-dev.11
 

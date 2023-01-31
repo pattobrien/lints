@@ -14,7 +14,10 @@ For more info on the benefits of using a design system, take a look at [this gre
 
 ## Available Rules
 ```yaml
-# copy these lints to sidecar.yaml file
+# copy these contents to sidecar.yaml at
+includes:
+  - "lib/**.dart"
+
 lints:
   design_system_lints:
     rules:
@@ -26,14 +29,73 @@ lints:
       radius:
       text_style:
       theme_data:
+        # additionally, severity for each rule can be set to
+        # either: info, warning, or error
+        severity: warning
+
 
 ```
 
+## Setup
+
+
+1. Add `design_system_lints` as a dev_dependency and 
+`design_system_annotations` as a regular dependency to your app's pubspec:
+
+```yaml
+name: example_app
+
+environment:
+  sdk: ">=2.17.0 <3.0.0"
+
+dependencies:
+  design_system_annotations: ^0.1.0-dev.2
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  design_system_lints: ^0.1.0
+
+```
+
+2. Create a sidecar.yaml file and add the rules you want to enable for your codebase:
+
+```yaml
+# sidecar.yaml
+includes:
+  - "lib/**.dart"
+
+lints:
+  design_system_lints:
+    rules:
+      icon:
+      box_constraints:
+      text_style:
+      radius:
+      box_shadow:
+      edge_insets:
+      color:
+      theme_data:
+        # severity for each rule can be set to
+        # either: info, warning, or error
+        severity: info
+```
+
+3. Finally, enable the sidecar plugin in `analysis_options.yaml` at the root of your project
+so that the lints can run in your IDE:
+
+```yaml
+# analysis_options.yaml
+analyzer:
+  plugins:
+    - sidecar
+```
+
+To learn more about using rules in your project (including CLI), follow the usage guide over at [sidecaranalyzer.dev](https://sidecaranalyzer.dev/docs/usage/intial_setup).
+
 ## Usage
 
-To enable the above rules in your project, follow the usage guide over at [sidecaranalyzer.dev](https://sidecaranalyzer.dev/docs/usage/intial_setup).
-
-Once the rules are enabled, the lints are designed to show info messages wherever design system rules are not properly followed. For example, the `edge_insets` rule enforces a standard usage of padding and margins by locating `EdgeInsets` code uses sizes defined outside of a design system.
+Once the rules are enabled, the lints are designed to show info messages wherever design system rules are not properly followed. For example, the `edge_insets` rule enforces a standard usage of padding and margins by locating `EdgeInsets` code that uses sizes defined outside of a design system.
 
 ```dart
 import 'package:flutter/material.dart';
@@ -45,17 +107,17 @@ class MyWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       // appears for hardcoded integer or double values
-      padding: EdgeInsets.only(left: 11.0, right: 9.0), // lint: avoid_edge_insets_literal
+      padding: EdgeInsets.only(left: 11.0, right: 9.0), // lint: edge_insets
 
       // also appears when using variables that are declared
       // outside of a design system
-      margin: EdgeInsets.all(large), // lint: avoid_edge_insets_literal
+      margin: EdgeInsets.all(large), // lint: edge_insets
     );
   }
 }
 ```
 
-Instead of using any variable for your padding, which is hard to maintain as your application scales, its better to define any sizing by either using `Theme` or static variables.
+Instead of using any variable for your padding, which is hard to maintain as your application scales, its better to define sizing by either using static variables.
 
 The package [`design_system_annotations`](https://pub.dev/packages/design_system_annotations) allows you to annotate your size variables with `@designSystem`, and permits their use throughout your codebase.
 
@@ -72,6 +134,9 @@ class DesignSystem {
   static const medium = 8.0;
   static const large = 12.0;
   static const xlarge = 16.0;
+
+  static const primary = Color(0x02569B);
+  static const secondary = Color(0x12B9FD);
 }
 
 // use the design system anywhere throughout your codebase
@@ -88,13 +153,13 @@ The above design system was defined using whats known as the [8pt system](https:
 
 Enforcing use of a highly maintainable UI system is as easy as that!
 
-You additionally can use `design_system_lints` to enforce many different types of parameters,
+You can additionally use `design_system_lints` to enforce many different types of parameters,
 including `SizedBox` and `Container` height and width values, `Color` values, `Icon` values,
 and more.
 
 ## Further resources
 
-Sidecar is a new package that allows anyone to create custom rules for their codebase. Since this
-is a relatively new concept, further questions and feedback are expected and encouraged.
+Sidecar is a new package that allows anyone to create custom rules for their codebase. Since custom rules 
+are a relatively new concept, further questions and feedback are expected.
 We encourage you to join the conversation on [discord](https://discord.com/invite/YhFS6V26Vg) and follow the [sidecar project](https://github.com/pattobrien/sidecar).
 
