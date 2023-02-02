@@ -1,5 +1,0 @@
-dependency_overrides:
-  #   flutter_analyzer_utils:
-  #     path: /Users/pattobrien/Development/sidecar/ecosystem/flutter_analyzer_utils/
-  sidecar:
-    path: /Users/pattobrien/Development/sidecar/packages/sidecar/
